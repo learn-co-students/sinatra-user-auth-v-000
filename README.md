@@ -182,7 +182,7 @@ ApplicationController
     responds with a 200 status code
     renders the home page view, 'home.erb'
 ```
-* Start up your app by running `shotgun` in the terminal. Visit the home page at `localhost:9393` and you should see the following: 
+* Start up your app by running `shotgun` in the terminal. Visit the home page at `localhost:9393` and you should see message that welcomes you to Hogwarts and shows you a link to sign up and a link to log in.
 
 * Let's look at the code behind this view. Open up that `app/views/home.rb` view and you should see the following
 
@@ -211,7 +211,7 @@ get '/registrations/signup' do
 end
 ```
 
-* Navigate to `localhost:9383/registrations/signup`. You should see a page that says `"Make me a sign up form!"`. Let's do it. 
+* Navigate to `localhost:9383/registrations/signup`. You should see a page that says `"sign up below:"`. Let's make a sign up form! 
 
 * Open up `app/views/registrations/signup.erb`. Our signup form needs a field for name, email and password. It needs to `POST` data to the `'/registrations'` path, so your form action should be `/registrations'` and your form method should be `POST`. 
 
@@ -277,7 +277,7 @@ get '/users/home' do
 ```
 
 * This is a link to the `get '/sessions/login'` route in the Sessions Controller. Open up `app/controllers/sessions_controller.rb` and checkout the two routes defined there. We have our `get '/sessions/login'` route and our `post '/sessions'` route. 
-* The `get /sessions/login'` route renders the Log In view page. Restart your app by executing `Command + C` and then typing `shotgun` in your terminal. Navigate back to the root page, `localhost:9393` and click on the `"Log In"` link. It should take you to a page that says "Make the log in form here!" Let's do it!
+* The `get /sessions/login'` route renders the Log In view page. Restart your app by executing `Command + C` and then typing `shotgun` in your terminal. Navigate back to the root page, `localhost:9393` and click on the `"Log In"` link. It should take you to a page that says `"log in below:"` Let's make our log in form!
 * Open up `app/views/sessions/login.erb`. We need a form that sends a `POST` request to `/sessions` and has an input field for email and password. Make your form with a log in button that says "Log In". Then, place a `binding.pry` in the `post '/sessions'` route in the Sessions Controller. Fill our the form and hit "Log In". 
 * Hop on over to your terminal and you should be stuck in your binding. Type in `params` and you should see the following (but with whatever information you filled out into the form):
 
