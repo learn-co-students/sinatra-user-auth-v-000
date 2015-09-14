@@ -27,6 +27,7 @@ RSpec.configure do |config|
   # end
 
   config.order = 'default'
+  config.formatter = :documentation
 end
 
 ActiveRecord::Base.logger.level = 1

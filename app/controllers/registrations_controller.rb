@@ -6,14 +6,10 @@ class RegistrationsController < ApplicationController
   end
 
   post '/registrations' do 
-    @user = User.new(name: params[:user][:name], email: params[:user][:email], password: params[:user][:password])
-    if @user.save
-      session[:id] = @user.id
-      redirect '/users/home'
-    else
-      erb :'/registrations/signup'
-    end
+    # use the data in params to create a new user and log them in by
+    # setting the session[:id] equal to the user's id here
     
+    redirect '/users/home'
   end
 
 end
