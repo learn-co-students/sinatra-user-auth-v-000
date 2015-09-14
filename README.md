@@ -42,11 +42,11 @@ In the MVC (model/view/controller) framework, we know that the controller is res
 # controller file
 
 get '/hello-word' do 
-	"Hello World!"
+  "Hello World!"
 end
 ```
 
-So far, we've become comfortable with applications that have one controller file, often named something like `app.rb`. That file has been responsible for handling all of the routes of a given application. In this exercise, we'll be writing a number of different controllers, each of which handle routes pertaining to different features. For example, when a user "signs up" for you app, we consider that to be a new registration. When a user signs in or out of your app, we consider them to be creating and terminating a session. These are different functions and therefore the routes that that rely on will be coded in different controller file. 
+So far, we've become comfortable with applications that have one controller file, often named something like `app.rb`. That file has been responsible for handling all of the routes of a given application. In this exercise, we'll be writing a number of different controllers, each of which handle routes pertaining to different features. For example, when a user "signs up" for you app, we consider that to be a new registration. When a user signs in or out of your app, we consider them to be creating and terminating a session. These are different functions and therefore the routes that that rely on will be coded in different controller files. 
 
 Before we get started writing any code, let's go through our project structure. It's important to understand the set-up of our different files and the reasoning behind it. 
 
@@ -56,28 +56,28 @@ Our file structure looks like this:
 
 ```bash
 -app
-	|- controllers
-			|- application_controller.rb
-			|- registrations_controller.rb
-			|- sessions_controller.rb
-			|- users_controller.rb
-	|- models
-			|- user.rb
-	|- views
-			|- home.erb
-			|- registrations
-					|- signup.erb
-			|- sessions
-					|- login.erb
-			|- users
-					|- home.erb
+  |- controllers
+      |- application_controller.rb
+      |- registrations_controller.rb
+      |- sessions_controller.rb
+      |- users_controller.rb
+  |- models
+      |- user.rb
+  |- views
+      |- home.erb
+      |- registrations
+          |- signup.erb
+      |- sessions
+          |- login.erb
+      |- users
+          |- home.erb
 -config
 -db
 -spec
-...				
+...       
 ```
 
-This is a slightly new set up, so let's walk through it together. 
+This is a slightly new set sup, so let's walk through it together. 
 
 ### The `app` Folder 
 
@@ -89,17 +89,17 @@ The `controllers` sub-directory holds our four controllers. Four controllers?! T
 
 * **`appliction_controller.rb`** is responsible for the the route to our root or home page. That is the route this controller handles. However, this controller *does* configure a few things for us, including setting up our ability to access the `session` hash. Consequently, all of our other controllers will *inherit* from the `ApplicationController` class, in order to have access to that configuration. 
 * **`registrations_controller.rb`** is responsible for the feature of user sign up. When a new user signs up for your app, it is considered to be a new **registration**. That's why this controller is called the `RegistrationsController`. This controller has two routes: 
-	* The `get '/registrations/signup'` route. This route has one responsibility: render the sign up form view. This view can be found in `app/views/registrations/signup.erb`. Notice that we don't only have separate controllers, we have separate view files to correspond to those controllers. 
-	* The `post '/registrations'` route. This route is responsible for receiving the `POST` request that happens when a user hits "submit" on that signup form. It will have the code that gets the new user's info from the params, creates a new user, signs them in and then redirects them somewhere else. 
+  * The `get '/registrations/signup'` route. This route has one responsibility: render the sign up form view. This view can be found in `app/views/registrations/signup.erb`. Notice that we don't only have separate controllers, we have separate view sub-folders to correspond to those controllers. 
+  * The `post '/registrations'` route. This route is responsible for receiving the `POST` request that happens when a user hits "submit" on that signup form. It will have the code that gets the new user's info from the params, creates a new user, signs them in and then redirects them somewhere else. 
 * **`sessions_controller.rb`** is responsible for user log in and log out. It has three routes:
-	* The `get '/sessions/login'` route. This route is responsible for rendering the login form. 
-	* The `post '/sessons'` route. This route is responsible for receiving the `POST` request that gets sent when a user hits "submit" on that login form. This route has the code that grabs the user's info from the params, finds that user from the database and signs that user in. 
-	* The `get '/sessions/logout'` route. This route is responsible for logging the user out by clearing the `session` hash. 
+  * The `get '/sessions/login'` route. This route is responsible for rendering the login form. 
+  * The `post '/sessons'` route. This route is responsible for receiving the `POST` request that gets sent when a user hits "submit" on that login form. This route has the code that grabs the user's info from the params, finds that user from the database and signs that user in. 
+  * The `get '/sessions/logout'` route. This route is responsible for logging the user out by clearing the `session` hash. 
 
 When a user is signed in, they should be redirected somewhere special. In our app, we'll redirect our user to their personal homepage. In any given app, a user might have a homepage, a page to edit their profile or personal information, a page to message their friends from, you name it. All of these functionalities pertain to the *user* specifically. They don't belong to the act of registering, or logging in, for example. Consequently, we want a separate controller for such routes and functions. In this app, the `UsersController` has one route, the route to the user's homepage. But, we want to get into the habit of giving different functions their own place to live, so we have our: 
 
 * **`users_controller.rb`** which has one route: 
-	* The `get '/users/home'` route. This route is responsible for rendering the user's home page view. 
+  * The `get '/users/home'` route. This route is responsible for rendering the user's home page view. 
 
 #### The `models` Folder
 
@@ -118,15 +118,15 @@ This folder has a few sub-folders we want to take a look at. Since we have our d
 
 #### Separation of Concerns
 
-The idea that different the code to carry out different tasks should get organized into different locations should be a familiar one. It is right in line with the **separation of concerns** design principle of object orientation. This principle states that a program or applications code should be organized into discrete units, such that each unit carries out a separate responsibility or behavior. 
+The idea that different code to carry out different tasks should get organized into different locations should be a familiar one. It is right in line with the **separation of concerns** design principle of object orientation. This principle states that a program or application's code should be organized into discrete units, such that each unit carries out a separate responsibility or behavior. 
 
 So, to honor this principle of organization and design, we give different functions their own space. For example, a user's registration is it's own function, so we have a `RegistrationsController` to handle it. Similarly, the template that renders the new registration, or signup, form gets it's own subdirectory, in `views/registrations`. It may seem like a lot of work to contain some minimal code, but think about larger, more complex applications. 
 
-Let's say you're running a popular online marketplace. You need users to be able to sign up, log in and out, browse items, add items to a shopping cart, purchase items, manager their account information and much more. If we placed the code to handle *all* of these functions in the same file, we'd have a super long, super messy file that would be a nightmare to debug and a nightmare for other developers to work collaboratively on. 
+Let's say you're running a popular online marketplace. You need users to be able to sign up, log in and out, browse items, add items to a shopping cart, purchase items, manager their account information and much more. If we placed the code to handle *all* of these functions in the same file, we'd have a super long, super messy file that would be really frustrating to debug and really frustrating for other developers to work collaboratively on. 
 
 ## Instructions
 
-Much of the structure of this application has been written out for you. We do have some work to do though. We need to write our models and migrations and we need to build the content of the routes and views that have been defined for us. In Part I of this lab, we'll handle the models and migrations. In Part II we'll deal with the controllers and view. 
+Much of the structure of this application has been written out for you. We do have some work to do though. We need to write our models and migrations and we need to build the content of the routes and views that have been defined for us. In Part I of this lab, we'll handle the models and migrations. In Part II we'll deal with the controllers and views. 
 
 ### Part I: Models and Migrations
 
@@ -140,9 +140,9 @@ You'll see that you're passing a number of tests, including tests like these:
 
 ```ruby
 User
-	is invalid without a name
-	is invalid without a email
-	is invalid without an password
+  is invalid without a name
+  is invalid without a email
+  is invalid without an password
 ```
 
 Let's think about the concept of validations...
@@ -161,7 +161,7 @@ end
 
 This line of code `validates_presence_of :name, :email, :password` is really powerful. It means that if you try to create a save a user that is missing any of those attributes, it won't work! 
 
-So now, if someone tries to sign up without a name, an email or a password, the code that tries to create a new user without key, validated, information, our app will break. Oh no! Okay, that's not good. But later on we'll learn how to *stop* it from breaking and instead give the user a helpful error message. For now, we're satisfied with our helpful validation code above. 
+So now, if someone tries to sign up without a name, an email or a password, the code that tries to create a new user without key, validated, information, will break our app. Oh no! Okay, that's not good. But later on we'll learn how to *stop* it from breaking and instead give the user a helpful error message. For now, we're satisfied with our helpful validation code above. 
 
 ## Part II: Controllers and Views
 
@@ -322,17 +322,3 @@ There's a lot to think about here, but there are a few take-aways:
 * Logging out is nothing more than clearing all the data from the `session` hash. 
 
 Another important take-away from this lab is the flow of information between the different routes and views of an application. If you're still confused by the flow of signing up, logging out/logging in, try drawing it out. Can you map out where you web requests go from the point at which you click the "Sign Up" link all the way through until you sign up, log out and then even log back in? Give it a shot. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
