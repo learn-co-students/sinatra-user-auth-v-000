@@ -14,12 +14,14 @@ class SessionsController < ApplicationController
 
     # redirect the user to this route: get '/users/home' 
     #  that route is in the Users Controller. Go check out the code there. 
+    @user = User.find_by(email: params["email"], password: params["password"])
+    session[:id] = @user.id
     redirect '/users/home'
   end
 
   get '/sessions/logout' do 
     # log out the user by clearing the session hash here
-
+    session.clear
     redirect '/'
   end
 end
