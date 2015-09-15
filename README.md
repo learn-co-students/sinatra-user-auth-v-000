@@ -317,7 +317,7 @@ There's a lot to think about here, but there are a few take-aways:
 * Separate your concerns! If you have a few routes that pertain to a specific action, give them their own controller. 
 * Same goes for the views, if there are some views that pertain to those specific controller routes, give them their own sub-folder. 
 * Signing up for an app is nothing more than submitting a form, grabbing data from params and using it to create a new user. 
-* Loggin in is nothing more that finding the right user and setting their user id equal to an `:id` key in the `session` hash. 
+* Logging in is nothing more that finding the right user and setting their user id equal to an `:id` key in the `session` hash. 
 * Logging out is nothing more than clearing all the data from the `session` hash. 
 
 Another important take-away from this lab is the flow of information between the different routes and views of an application. If you're still confused by the flow of signing up, logging out/logging in, try drawing it out. Can you map out where you web requests go from the point at which you click the "Sign Up" link all the way through until you sign up, log out and then even log back in? Give it a shot. 
