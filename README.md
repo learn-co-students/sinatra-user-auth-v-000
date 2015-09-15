@@ -172,7 +172,7 @@ First things first, let's set up our root path and our home page.
 * Open up `app/controllers/application_controller.rb` and check out the `get '/'` route. This route should render the `app/views/home.erb` page with the following code: 
 
 ```ruby
-erb :'/home'
+erb :home
 ```
 * Run your test suite again with `learn` or `rspec` in the command line and you should be passing these two tests: 
 
