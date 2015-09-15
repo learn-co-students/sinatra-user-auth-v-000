@@ -122,7 +122,7 @@ The idea that different code to carry out different tasks should get organized i
 
 So, to honor this principle of organization and design, we give different functions their own space. For example, a user's registration is it's own function, so we have a `RegistrationsController` to handle it. Similarly, the template that renders the new registration, or signup, form gets it's own subdirectory, in `views/registrations`. It may seem like a lot of work to contain some minimal code, but think about larger, more complex applications. 
 
-Let's say you're running a popular online marketplace. You need users to be able to sign up, log in and out, browse items, add items to a shopping cart, purchase items, manager their account information and much more. If we placed the code to handle *all* of these functions in the same file, we'd have a super long, super messy file that would be really frustrating to debug and really frustrating for other developers to work collaboratively on. 
+Let's say you're running a popular online marketplace. You need users to be able to sign up, log in and out, browse items, add items to a shopping cart, purchase items, manage their account information and much more. If we placed the code to handle *all* of these functions in the same file, we'd have a super long, super messy file that would be really frustrating to debug and really frustrating for other developers to work collaboratively on. 
 
 ## Instructions
 
