@@ -91,11 +91,24 @@ The code in `app/models/user.rb` will be pretty basic. We'll validate some of th
 
 #### The `views` Folder
 
-This folder has a few sub-folders we want to take a look at. Since we have different controllers responsible for different functions/features, we want our `views` folder structure to match up.
-* The **`views/registrations`** sub-directory contains one file, the template for the new user sign-up form. That template will be rendered by the `get '/registrations/signup'` route in our controller. This form will `POST` to the `post '/registrations'` route in our controller.
-* The **`views/sessions`** sub-directory contains one file, the template for the login form. This template is rendered by the `get '/sessions/login'` route in the controller. The form on this page sends a `POST` request that is handled by the `post '/sessions'` route.
-* The **`views/users`** sub-directory contains one file, the template for the user's homepage. This page is rendered by the `get '/users/home'` route in the controller.
-* We also have a `home.erb` file in the top level of the `views` directory. This is the page rendered by the root route, `get '/'`.
+This folder has a few sub-folders we want to take a look at. Since we have our different controllers responsible for different functions/features, we want our view folder structure to match up. So, we have:
+
+* The **`views/registrations`** sub-directory. This directory has just one file, the template for the new user signup form. That template will be rendered by the `get '/registrations/signup'` route in our Registrations Controller. This form will `POST` to the `post '/registrations'` route of that same controller. 
+* The **`views/sessions`** sub-directory. This directory also has just one file, the template for the login form. This template is rendered by the `get '/sessions/login'` route in the Sessions Controller. The form on this page `POST`s to the `post '/sessions'` route in that same controller. 
+* The **`views/users`** sub-directory. This directory has just one file, the template for the user's homepage. This page is rendered by the `get '/users/home'` route in the Users Controller. 
+* We also have a `home.erb` file in the top level of the views directory. This is the page rendered by the root route, `get '/'`, defined in the Application Controller. 
+
+#### Separation of Concerns
+
+The idea that different code to carry out different tasks should get organized into different locations should be a familiar one. It is right in line with the **separation of concerns** design principle of object orientation. This principle states that a program or application's code should be organized into discrete units, such that each unit carries out a separate responsibility or behavior. 
+
+So, to honor this principle of organization and design, we give different functions their own space. For example, a user's registration is it's own function, so we have a `RegistrationsController` to handle it. Similarly, the template that renders the new registration, or signup, form gets it's own subdirectory, in `views/registrations`. It may seem like a lot of work to contain some minimal code, but think about larger, more complex applications. 
+
+Let's say you're running a popular online marketplace. You need users to be able to sign up, log in and out, browse items, add items to a shopping cart, purchase items, manage their account information and much more. If we placed the code to handle *all* of these functions in the same file, we'd have a super long, super messy file that would be really frustrating to debug and really frustrating for other developers to work collaboratively on. 
+
+## Instructions
+
+Much of the structure of this application has been written out for you. We do have some work to do though. We need to write our models and migrations and we need to build the content of the routes and views that have been defined for us. In Part I of this lab, we'll handle the models and migrations. In Part II we'll deal with the controllers and views. 
 
 ### Part I: Models and Migrations
 
