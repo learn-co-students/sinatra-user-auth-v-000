@@ -12,7 +12,7 @@ describe "SessionsController" do
     end
 
     it "renders the signup template" do
-      expect(last_response.body).to include("Log In")
+      expect(last_response.body).to include("log in below:")
     end
   end
 end
