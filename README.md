@@ -195,18 +195,17 @@ ApplicationController
 
 Notice that we have two links, the "Sign Up" link and the "Log In" link. Let's take a closer look: 
 
-* The "href" or destination of the first link is `/registrations/signup`. This means that think link points to the route `get 'registrations/signup'`, which can be found in the Registrations Controller, in `app/registrations_controller.rb`. 
-* The "href" or destination of the second link is `/sessions/login`. This means that think link points to the route `get 'sessions/loging'`, which can be found in the Sessions Controller, in `app/sessions_controller.rb`. 
+* The "href" or destination of the first link is `/registrations/signup`. This means that this link points to the route `get 'registrations/signup'`, which can be found in the Registrations Controller, in `app/registrations_controller.rb`. 
+* The "href" or destination of the second link is `/sessions/login`. This means that this link points to the route `get 'sessions/loging'`, which can be found in the Sessions Controller, in `app/sessions_controller.rb`. 
 
 Let's move on to step 2, the building our user sign up flow. 
 
 #### Step 2: User Sign Up with the Registrations Controller and Views
 
-* Open up `app/registrations_controller.rb` and you should see two route. Let's take a look at the first route, the `get '/registrations/signup'`, which is responsible for rendering the signup template. 
+* Open up `app/registrations_controller.rb` and you should see two routes. Let's take a look at the first route,  `get '/registrations/signup'`, which is responsible for rendering the signup template. 
 
 ```ruby
 get '/registrations/signup' do
-
     erb :'/registrations/signup'
 end
 ```
