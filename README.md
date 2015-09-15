@@ -9,7 +9,7 @@
 
 ### Logging In
 
-What does it mean for a user to "log in"? The action of logging in the simple the action of storing a user's ID in the `session` hash. Here's a basic user log in flow: 
+What does it mean for a user to "log in"? The action of logging is the simple action of storing a user's ID in the `session` hash. Here's a basic user log in flow: 
 
 1. User visits the log in page and fills out a form with their email and password. They hit "submit" and `POST` that data to a controller route. 
 2. That controller route accesses the user's email and password from the params. That info is used to find the appropriate user from the database with a line such as `User.find_by(email: params[:email], password: params[:password])`. **Then, that user's ID is stored at the value of `session[:id]`.**
@@ -169,10 +169,10 @@ So now, if someone tries to sign up without a name, an email or a password, the 
 
 First things first, let's set up our root path and our home page. 
 
-* Open up `app/controllers/application_controller.rb` and checkout the `get '/'` route. This route should render the `app/views/home.erb` page with the following code: 
+* Open up `app/controllers/application_controller.rb` and check out the `get '/'` route. This route should render the `app/views/home.erb` page with the following code: 
 
 ```ruby
-erb :'/home'
+erb :home
 ```
 * Run your test suite again with `learn` or `rspec` in the command line and you should be passing these two tests: 
 
@@ -195,18 +195,17 @@ ApplicationController
 
 Notice that we have two links, the "Sign Up" link and the "Log In" link. Let's take a closer look: 
 
-* The "href" or destination of the first link is `/registrations/signup`. This means that think link points to the route `get 'registrations/signup'`, which can be found in the Registrations Controller, in `app/registrations_controller.rb`. 
-* The "href" or destination of the second link is `/sessions/login`. This means that think link points to the route `get 'sessions/loging'`, which can be found in the Sessions Controller, in `app/sessions_controller.rb`. 
+* The "href" or destination of the first link is `/registrations/signup`. This means that this link points to the route `get 'registrations/signup'`, which can be found in the Registrations Controller, in `app/registrations_controller.rb`. 
+* The "href" or destination of the second link is `/sessions/login`. This means that this link points to the route `get 'sessions/loging'`, which can be found in the Sessions Controller, in `app/sessions_controller.rb`. 
 
 Let's move on to step 2, the building our user sign up flow. 
 
 #### Step 2: User Sign Up with the Registrations Controller and Views
 
-* Open up `app/registrations_controller.rb` and you should see two route. Let's take a look at the first route, the `get '/registrations/signup'`, which is responsible for rendering the signup template. 
+* Open up `app/registrations_controller.rb` and you should see two routes. Let's take a look at the first route,  `get '/registrations/signup'`, which is responsible for rendering the signup template. 
 
 ```ruby
 get '/registrations/signup' do
-
     erb :'/registrations/signup'
 end
 ```
@@ -215,9 +214,9 @@ end
 
 * Open up `app/views/registrations/signup.erb`. Our signup form needs a field for name, email and password. It needs to `POST` data to the `'/registrations'` path, so your form action should be `/registrations'` and your form method should be `POST`. 
 
-* Once you've written your form, go ahead and place a `binding.pry` inside the `post '/registrations` route in `app/controllers/registrations_controller.rb`. Then, fill out the form in your browser and hit the `"Sign Up"` button. 
+* Once you've written your form, go ahead and add the line: `puts params` inside the `post '/registrations` route in `app/controllers/registrations_controller.rb`. Then, fill out the form in your browser and hit the `"Sign Up"` button. 
 
-* Hop on over to your terminal and you should be stuck in that binding. Type in `params` and you should see something that looks like this (but with whatever info you entered into the form):
+* Hop on over to your terminal and you should see the params outputted there. It should look something like this (but with whatever info you entered into the form):
 
 ```ruby
 {"name"=>"Beini Huang", "email"=>"beini@bee.com", "password"=>"password"}
@@ -278,8 +277,8 @@ get '/users/home' do
 
 * This is a link to the `get '/sessions/login'` route in the Sessions Controller. Open up `app/controllers/sessions_controller.rb` and checkout the two routes defined there. We have our `get '/sessions/login'` route and our `post '/sessions'` route. 
 * The `get /sessions/login'` route renders the Log In view page. Restart your app by executing `Command + C` and then typing `shotgun` in your terminal. Navigate back to the root page, `localhost:9393` and click on the `"Log In"` link. It should take you to a page that says `"log in below:"` Let's make our log in form!
-* Open up `app/views/sessions/login.erb`. We need a form that sends a `POST` request to `/sessions` and has an input field for email and password. Make your form with a log in button that says "Log In". Then, place a `binding.pry` in the `post '/sessions'` route in the Sessions Controller. Fill our the form and hit "Log In". 
-* Hop on over to your terminal and you should be stuck in your binding. Type in `params` and you should see the following (but with whatever information you filled out into the form):
+* Open up `app/views/sessions/login.erb`. We need a form that sends a `POST` request to `/sessions` and has an input field for email and password. Make your form with a submit button that says "Log In". Then, place this line: `puts params`, in the `post '/sessions'` route in the Sessions Controller. Fill our the form and hit "Log In". 
+* Hop on over to your terminal and you should see the outputted params, looking something like this (but with whatever information you filled out into the form):
 
 ```ruby
 {"email"=>"beini@bee.com", "password"=>"password"}
