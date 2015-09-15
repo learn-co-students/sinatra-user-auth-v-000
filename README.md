@@ -169,7 +169,7 @@ So now, if someone tries to sign up without a name, an email or a password, the 
 
 First things first, let's set up our root path and our home page. 
 
-* Open up `app/controllers/application_controller.rb` and checkout the `get '/'` route. This route should render the `app/views/home.erb` page with the following code: 
+* Open up `app/controllers/application_controller.rb` and check out the `get '/'` route. This route should render the `app/views/home.erb` page with the following code: 
 
 ```ruby
 erb :'/home'
