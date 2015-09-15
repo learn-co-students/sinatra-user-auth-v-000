@@ -12,7 +12,7 @@ describe "RegistrationsController" do
     end
 
     it "renders the signup template" do
-      expect(last_response.body).to include("Sign Up!")
+      expect(last_response.body).to include("sign up below:")
     end
   end
 end
