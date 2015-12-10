@@ -21,13 +21,6 @@ describe "User sign up, log in, sign out" do
       expect(page).to have_content("Welcome, #{valid_user.name}!")
     end
 
-    # it 'fails to sign up without an email address' do 
-    #   expect(current_path).to eq('/registrations/signup')
-    #   fill_in("name", :with => valid_user.name)
-    #   fill_in("email", :with => valid_user.password)
-    #   click_button('Sign Up')
-    #   expect(page).to have_content("Sign Up")
-    # end
   end
 
   describe "user login" do 
