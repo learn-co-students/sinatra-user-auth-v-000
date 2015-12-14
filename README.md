@@ -71,7 +71,7 @@ The `app` folder contains the models, views and controllers that make up the cor
 
 * The `get '/sessions/login'` route. This route is responsible for rendering the login form. 
 
-* The `post '/sessons'` route. This route is responsible for receiving the `POST` request that gets sent when a user hits "submit" on that login form. This route has the code that grabs the user's info from the params, finds that user from the database and signs that user in. 
+* The `post '/sessions'` route. This route is responsible for receiving the `POST` request that gets sent when a user hits "submit" on that login form. This route has the code that grabs the user's info from the params, finds that user from the database and signs that user in. 
   
 * The `get '/sessions/logout'` route. This route is responsible for logging the user out by clearing the `session` hash. 
 
