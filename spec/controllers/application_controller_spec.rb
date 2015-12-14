@@ -51,6 +51,7 @@ describe "ApplicationController" do
 
   describe "user's home page: GET /users/home" do
 
+
     it "responds with a 200 status code" do
       @user = User.create(:name => "Bitsy Flipsy", :email => "bitsy@hogwarts.edu", :password => "luminosity")
       visit 'sessions/login'
