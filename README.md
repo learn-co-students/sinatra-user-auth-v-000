@@ -9,7 +9,7 @@
 
 ### Logging In
 
-What does it mean for a user to "log in"? The action of logging is the simple action of storing a user's ID in the `session` hash. Here's a basic user log in flow: 
+What does it mean for a user to "log in"? The action of logging in is the simple action of storing a user's ID in the `session` hash. Here's a basic user log in flow: 
 
 1. User visits the log in page and fills out a form with their email and password. They hit "submit" and `POST` that data to a controller route. 
 2. That controller route accesses the user's email and password from the params. That info is used to find the appropriate user from the database with a line such as `User.find_by(email: params[:email], password: params[:password])`. **Then, that user's ID is stored at the value of `session[:id]`.**
