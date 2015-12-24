@@ -201,7 +201,7 @@ Open up the view file: `app/views/users/home.erb` and look at the following line
 "Welcome, <%=@user.name%>!"
 ```
 
-Looks like this view is trying to operate on an `@user` variable. We know that the only variables that a view has access to are instance variables that are set in the controller route that renders that view page. For this page, that route can be found the Users Controller. 
+Looks like this view is trying to operate on a `@user` variable. We know that the only variables that a view has access to are instance variables that are set in the controller route that renders that view page. For this page, that route can be found in the Users Controller. 
 
 Remember that, after a user signs up and is signed in via the code we wrote in the previous step, we redirect to this path: `'/users/home'`. Let's go check out that route right now. 
 
