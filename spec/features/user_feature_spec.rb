@@ -20,6 +20,7 @@ describe "User sign up, log in, sign out" do
       expect(current_path).to eq('/users/home')
       expect(page).to have_content("Welcome, #{valid_user.name}!")
     end
+
   end
 
   describe "user login" do 
