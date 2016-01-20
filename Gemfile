@@ -14,6 +14,7 @@ gem 'pry'
 group :test do
   gem 'launchy'
   gem 'rspec'
+  gem 'learn-co'
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'

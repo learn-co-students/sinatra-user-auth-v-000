@@ -12,33 +12,32 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/registrations/signup' do
-
     erb :'/registrations/signup'
   end
 
   post '/registrations' do 
+    @user = User.create(params)
+    session[:user_id] = @user.id
     redirect '/users/home'
   end
 
   get '/sessions/login' do
-
-    erb :'sessions/login'
+    erb :'/sessions/login'
   end
 
   post '/sessions' do
-    
+    @user = User.find_by(params)
+    session[:user_id] = @user.id
     redirect '/users/home'
   end
 
   get '/sessions/logout' do 
-
     redirect '/'
   end
 
   get '/users/home' do
-   
+    @user = User.find(session[:user_id])
     erb :'/users/home'
   end
-
 
 end
