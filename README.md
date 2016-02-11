@@ -186,10 +186,10 @@ session[:id] = @user.id
 * Take a look at the last line of the method: 
 
 ```ruby
-redirect '/users/home'
+# redirect '/users/home'
 ```
 
-Now that we've signed up and logged in our user, we want to take him or her to their home page. 
+Now that we've signed up and logged in our user, we want to take him or her to their home page.  To do that, you'll want to uncomment this last line of code. 
 
 Go ahead and run the test suite again and you should see that *almost all* of the user sign up tests are passing. 
 
