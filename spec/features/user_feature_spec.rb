@@ -57,7 +57,7 @@ describe "User sign up, log in, sign out" do
       click_button('Log In')
       click_link('Log Out')
       expect(current_path).to eq('/')
-      expect(page).to have_content('Log In')
+      expect(page).to have_content('Nobody is currently logged in.')
     end
   end
 end
