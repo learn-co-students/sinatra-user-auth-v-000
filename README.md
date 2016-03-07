@@ -244,9 +244,9 @@ session[:id] = @user.id
 
 * Open up `app/views/users/home.erb` and check out the following link: 
 
-```
+```html
 <a href="/sessions/logout">Log Out</a>
-``` 
+```
 
 * We have a link that takes us to the `get '/sessions/logout'` route, which is responsible for logging us out by clearing the `session` hash. 
 * The logout route in the controller `get '/sessions/logout'`: 
