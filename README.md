@@ -244,7 +244,7 @@ session[:id] = @user.id
 
 * Open up `app/views/users/home.erb` and check out the following link: 
 
-```
+```html
 <a href="/sessions/logout">Log Out</a>
 ``` 
 
