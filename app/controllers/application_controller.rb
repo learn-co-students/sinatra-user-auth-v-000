@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    if !session[:id].nil?
+    if !session[:id].nil?#q
       redirect '/users/home'
     else
       erb :home
