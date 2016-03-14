@@ -132,7 +132,7 @@ ApplicationController
 ```
 * Start up your app by running `shotgun` in the terminal. Visit the home page at `localhost:9393` and you should see message that welcomes you to Hogwarts and shows you a link to sign up and a link to log in.
 
-* Let's look at the code behind this view. Open up that `app/views/home.rb` view and you should see the following
+* Let's look at the code behind this view. Open up that `app/views/home.erb` view and you should see the following
 
 ```ruby
 <h1>Welcome to Hogwarts</h1>
@@ -270,3 +270,5 @@ There's a lot to think about here, but there are a few take-aways:
 Another important take-away from this lab is the flow of information between the different routes and views of an application. If you're still confused by the flow of signing up, logging out/logging in, try drawing it out. Can you map out where you web requests go from the point at which you click the "Sign Up" link all the way through until you sign up, log out and then even log back in? Give it a shot. 
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth' title='User Authentication in Sinatra'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
