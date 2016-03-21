@@ -160,9 +160,9 @@ end
 
 * Navigate to `localhost:9383/registrations/signup`. You should see a page that says `"sign up below:"`. Let's make a sign up form! 
 
-* Open up `app/views/registrations/signup.erb`. Our signup form needs a field for name, email and password. It needs to `POST` data to the `'/registrations'` path, so your form action should be `/registrations'` and your form method should be `POST`. 
+* Open up `app/views/registrations/signup.erb`. Our signup form needs a field for name, email and password. It needs to `POST` data to the `'/registrations'` path, so your form action should be `'/registrations'` and your form method should be `POST`. 
 
-* Once you've written your form, go ahead and add the line: `puts params` inside the `post '/registrations` route in the controller. Then, fill out the form in your browser and hit the `"Sign Up"` button. 
+* Once you've written your form, go ahead and add the line: `puts params` inside the `post '/registrations'` route in the controller. Then, fill out the form in your browser and hit the `"Sign Up"` button. 
 
 * Hop on over to your terminal and you should see the params outputted there. It should look something like this (but with whatever info you entered into the form):
 
@@ -170,7 +170,7 @@ end
 {"name"=>"Beini Huang", "email"=>"beini@bee.com", "password"=>"password"}
 ```
 
-* Okay, so we're inside our `post '/registrations'` route, we have our params that contains the user's name, email and password. Inside the `post 'registrations'` route, place the following code:
+* Okay, so we're inside our `post '/registrations'` route, we have our params that contains the user's name, email and password. Inside the `post '/registrations'` route, place the following code:
 
 ```ruby
 @user = User.new(name: params["name"], email: params["email"], password: params["password"])
@@ -203,7 +203,7 @@ Open up the view file: `app/views/users/home.erb` and look at the following line
 
 Looks like this view is trying to operate on a `@user` variable. We know that the only variables that a view has access to are instance variables that are set in the controller route that renders that view page. For this page, that route can be found in the Users Controller. 
 
-Remember that, after a user signs up and is signed in via the code we wrote in the previous step, we redirect to this path: `'/users/home'`. Let's go check out that route right now. 
+Remember, after a user signs up and is signed in via the code we wrote in the previous step, we redirect to this path: `'/users/home'`. Let's go check out that route right now. 
 
 * Again, take a look at the controller. You should be able to find the route `get '/users/home'`. This route is responsible for finding the current user, based on the ID in the `session` hash and setting that user equal to a variable, `@user` that we can render in our view page. Let's do it: 
 
@@ -249,7 +249,7 @@ session[:id] = @user.id
 ```
 
 * We have a link that takes us to the `get '/sessions/logout'` route, which is responsible for logging us out by clearing the `session` hash. 
-* The logout route in the controller `get '/sessions/logout'`: 
+* In the logout route in the `get '/sessions/logout'` controller, put:
 
 ```ruby
 session.clear
