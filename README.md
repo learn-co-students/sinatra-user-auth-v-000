@@ -267,6 +267,8 @@ There's a lot to think about here, but there are a few take-aways:
 * Logging in is nothing more that finding the right user and setting their user id equal to an `:id` key in the `session` hash. 
 * Logging out is nothing more than clearing all the data from the `session` hash. 
 
-Another important take-away from this lab is the flow of information between the different routes and views of an application. If you're still confused by the flow of signing up, logging out/logging in, try drawing it out. Can you map out where you web requests go from the point at which you click the "Sign Up" link all the way through until you sign up, log out and then even log back in? Give it a shot. 
+Another important take-away from this lab is the flow of information between the different routes and views of an application. If you're still confused by the flow of signing up, logging out/logging in, try drawing it out. Can you map out where your web requests go from the point at which you click the "Sign Up" link all the way through until you sign up, log out and then even log back in? Give it a shot. 
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth' title='User Authentication in Sinatra'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
