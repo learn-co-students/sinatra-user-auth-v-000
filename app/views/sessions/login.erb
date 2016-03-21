@@ -1,2 +1,14 @@
 <h1>log in below:</h1>
-
+<!-- POSTs to the post '/sessions' route. -->
+<form action="/sessions" method="POST">
+  <label for="POST-name">Name:</label>
+  <input id="name" type="text" name="user[name]">
+   <br>
+  <label for="POST-email">Email:</label>
+  <input id="email" type="text" name="user[email]">
+  <br>
+  <label for="POST-password">password:</label>
+  <input id="password" type="text" name="user[password]">
+  <br>
+  <button type="submit" value="submit">Log In</button>
+</form>
