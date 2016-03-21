@@ -132,7 +132,7 @@ ApplicationController
 ```
 * Start up your app by running `shotgun` in the terminal. Visit the home page at `localhost:9393` and you should see message that welcomes you to Hogwarts and shows you a link to sign up and a link to log in.
 
-* Let's look at the code behind this view. Open up that `app/views/home.rb` view and you should see the following
+* Let's look at the code behind this view. Open up that `app/views/home.erb` view and you should see the following
 
 ```ruby
 <h1>Welcome to Hogwarts</h1>
