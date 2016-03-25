@@ -12,31 +12,39 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/registrations/signup' do
-
     erb :'/registrations/signup'
   end
 
   post '/registrations' do 
+    puts params
+    #register new user
+    @user = User.new(name: params[:name], email: params[:email], password: params[:password])
+    @user.save
+    #set session id to new user id
+    session[:id] = @user.id
     redirect '/users/home'
   end
 
   get '/sessions/login' do
-
     erb :'sessions/login'
   end
 
   post '/sessions' do
-    
+    puts params
+    #find user in db based on login info
+    @user = User.find_by(email: params[:email], password: params[:password])
+    #set session id to existing user id
+    session[:id] = @user.id
     redirect '/users/home'
   end
 
   get '/sessions/logout' do 
-
+    session.clear
     redirect '/'
   end
 
   get '/users/home' do
-   
+    @user = User.find(session[:id]) #saved in session
     erb :'/users/home'
   end
 
