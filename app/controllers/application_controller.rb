@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
 
   post '/registrations' do
     #binding.pry 
-    @user = User.find_or_create_by(:name => params[:name], :email => params[:email], :password => params[:password])
+    @user = User.new(name: params["name"], email: params["email"], password: params["password"])
     @user.save
 
     session[:id] = @user.id
@@ -30,8 +30,8 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessions' do
-    @user = User.find_or_create_by(email: params[:email], password: params[:password])
-    @user.id = session[:id]
+    @user = User.find_by(email: params[:email], password: params[:password])
+    session[:id] = @user.id 
     redirect '/users/home'
   end
 
@@ -41,7 +41,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/home' do
-    @user = User.find_by(session[:id])
+    @user = User.find(session[:id])
     erb :'/users/home'
   end
 
