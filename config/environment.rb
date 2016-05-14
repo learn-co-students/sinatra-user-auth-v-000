@@ -8,5 +8,9 @@ ActiveRecord::Base.establish_connection(
   :database => "db/user_auth#{ENV['SINATRA_ENV']}.sqlite"
 )
 
+configure :development do
+  set :database, "sqlite3:db/database.db"
+end
+
 Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
 Dir[File.join(File.dirname(__FILE__), "../app/controllers", "*.rb")].each {|f| require f}
