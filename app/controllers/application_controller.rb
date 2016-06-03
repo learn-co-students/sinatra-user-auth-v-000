@@ -17,6 +17,10 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registrations' do 
+    # puts params: {"name"=>"Mike", "email"=>"mike@hogwarts.edu", "password"=>"mike@hogwarts", "submit"=>"Submit"}
+    @user = User.new(name: params["name"], email: params["email"], password: params["password"])
+    @user.save
+    session[:id] = @user.id
     redirect '/users/home'
   end
 
@@ -26,17 +30,19 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessions' do
-    
+    # puts params {"email"=>"miguel@hogwarts.edu", "password"=>"miguel@hogwarts", "submit"=>"Log In"}
+    @user = User.find_by(email: params["email"], password: params["password"])
+    session[:id] = @user.id
     redirect '/users/home'
   end
 
   get '/sessions/logout' do 
-
+    session.clear
     redirect '/'
   end
 
   get '/users/home' do
-   
+    @user = User.find(session[:id])
     erb :'/users/home'
   end
 
