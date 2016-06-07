@@ -1,11 +1,6 @@
 <h1>Log In Below:</h1>
-
-<form action='/sessions' method='POST'>
-  <label>Email:</label><input type='text' name='email' />
-  <label>Password:</label><input type='password' name='password' />
-  <input type='submit' value='Log In' />
-
-   <!-- <%=@user.name%>
-    <%=@user.email%>
-    <%=@user.password%> -->
+<form action="/sessions" method="post">
+	<p>Enter Your Email: <input type="text" name="email"></p>
+	<p>Enter Your Password: <input type="text" name="password"></p>
+	<button value="submit">Log In</button>
 </form>

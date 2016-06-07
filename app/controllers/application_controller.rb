@@ -20,6 +20,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registrations' do
+    puts params
     # use the data in params to create a new user and log them in by
     # setting the session[:id] equal to the user's id here
     @user = User.new(name: params["name"], email: params["email"], password: params["password"])
@@ -31,10 +32,11 @@ class ApplicationController < Sinatra::Base
   get '/sessions/login' do
     #render the view page in app/views/sessions/login.erb
 
-    erb :'sessions/login'
+    erb :'/sessions/login'
   end
 
   post '/sessions' do
+    puts params
 # find the user who submitted the log in forms by looking in your database
 #   for the user with the email and password from the params
 # sign them in by setting the session[:id] equal to the user's id
