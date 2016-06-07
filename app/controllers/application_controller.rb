@@ -23,10 +23,10 @@ class ApplicationController < Sinatra::Base
     # use the data in params to create a new user and log them in by
     # setting the session[:id] equal to the user's id here
     @user = User.new(name: params["name"], email: params["email"], password: params["password"])
-    @user.save
-    session[:id] = @user.id
-    redirect '/users/home'
-  end
+      @user.save
+      session[:id] = @user.id
+      redirect '/users/home'
+    end
 
   get '/sessions/login' do
     #render the view page in app/views/sessions/login.erb
@@ -38,9 +38,9 @@ class ApplicationController < Sinatra::Base
 # find the user who submitted the log in forms by looking in your database
 #   for the user with the email and password from the params
 # sign them in by setting the session[:id] equal to the user's id
-    @user = User.find_by_id(email: params["email"], passoword: params["password"])
-    session[:id]=@user.id
-    redirect '/users/home'
+  @user = User.find_by(email: params["email"], password: params["password"])
+  session[:id] = @user.id
+  redirect '/users/home'
   end
 
   get '/sessions/logout' do
@@ -54,9 +54,8 @@ class ApplicationController < Sinatra::Base
 #   in session[:id]
 # set that user equal to a variable, @user, so that the view found in
 #   app/views/users/home.erb can render that user
-    @user = User.find(session[:id])
-    erb :'/users/home'
+  @user = User.find(session[:id])
+  erb :'/users/home'
   end
-
 
 end
