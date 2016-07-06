@@ -158,7 +158,7 @@ get '/registrations/signup' do
 end
 ```
 
-* Navigate to `localhost:9383/registrations/signup`. You should see a page that says `"sign up below:"`. Let's make a sign up form! 
+* Navigate to `localhost:9393/registrations/signup`. You should see a page that says `"sign up below:"`. Let's make a sign up form! 
 
 * Open up `app/views/registrations/signup.erb`. Our signup form needs a field for name, email and password. It needs to `POST` data to the `'/registrations'` path, so your form action should be `'/registrations'` and your form method should be `POST`. 
 
@@ -272,3 +272,5 @@ Another important take-away from this lab is the flow of information between the
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth' title='User Authentication in Sinatra'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-user-auth'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
