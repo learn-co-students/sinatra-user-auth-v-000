@@ -51,6 +51,7 @@ describe "ApplicationController" do
     it "responds with a 200 status code" do
       @user = User.create(:name => "Bitsy Flipsy", :email => "bitsy@hogwarts.edu", :password => "luminosity")
       visit 'sessions/login'
+      # save_and_open_page
       fill_in(:email, :with => "bitsy@hogwarts.edu")
       fill_in(:password, :with => "luminosity")
       click_button "Log In"
