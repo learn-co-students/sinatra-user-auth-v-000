@@ -1,5 +1,5 @@
 # A sample Gemfile
-source "https://rubygems.org"
+source "http://rubygems.org"
 
 gem 'sinatra'
 gem 'activerecord', :require => 'active_record'
@@ -16,5 +16,5 @@ group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
-  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+  gem 'database_cleaner', git: 'http://github.com/bmabey/database_cleaner.git'
 end
