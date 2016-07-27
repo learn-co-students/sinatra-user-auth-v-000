@@ -1,3 +1,4 @@
+
 require 'pry'
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
@@ -29,17 +30,19 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessions' do
-
+    @user = User.find_by(email: params[:email], password: params[:password])
+    session[:id] = @user.id
     redirect '/users/home'
   end
 
   get '/sessions/logout' do
-
+    session.clear
     redirect '/'
   end
 
   get '/users/home' do
     @user = User.find(session[:id])
+    @id = session[:id] #to clarify session[:id]
     erb :'/users/home'
   end
 
