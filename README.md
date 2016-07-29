@@ -2,41 +2,41 @@
 
 # Objectives
 
-1. Build a Sinatra application with a Users model so that users can sign up for and sign in to your app. 
-2. Learn how to use sessions to authorize, i.e. log in and log out users of a web application. 
+1. Build a Sinatra application with a Users model so that users can sign up for and sign in to your app.
+2. Learn how to use sessions to authorize, i.e., to log users in and out of a web application.
 
-## User Authorization: Using Sessions 
+## User Authorization: Using Sessions
 
 ### Logging In
 
-What does it mean for a user to "log in"? The action of logging in is the simple action of storing a user's ID in the `session` hash. Here's a basic user log in flow: 
+What does it mean for a user to 'log in'? The action of logging in is the simple action of storing a user's ID in the `session` hash. Here's a basic user login flow:
 
-1. User visits the log in page and fills out a form with their email and password. They hit "submit" and `POST` that data to a controller route. 
-2. That controller route accesses the user's email and password from the params. That info is used to find the appropriate user from the database with a line such as `User.find_by(email: params[:email], password: params[:password])`. **Then, that user's ID is stored at the value of `session[:id]`.**
-3. As a result, we can introspect on the `session` hash in *any other controller route* and grab current user by matching up a user ID with the `session[:id]`. That means that, for the duration of session (i.e. the time between someone logs in and logs out of your app), our app will know who the "current user" is on every page. 
+1. User visits the login page and fills out a form with their email and password. They hit 'submit' to `POST` that data to a controller route.
+2. That controller route accesses the user's email and password from the `params` hash. That info is used to find the appropriate user from the database with a line such as `User.find_by(email: params[:email], password: params[:password])`. **Then, that user's ID is stored as the value of `session[:id]`.**
+3. As a result, we can introspect on the `session` hash in *any other controller route* and grab the current user by matching up a user ID with the value in `session[:id]`. That means that, for the duration of the session (i.e., the time between when someone logs in to and logs out of your app), the app will know who the current user is on every page.
 
-#### A Note On Password Encryption 
+#### A Note On Password Encryption
 
-For the time being, we will simply store a user's password in the database in it's raw form. However, that is not safe! In an upcoming lesson, we'll learn about password encryption: the act of scrambling a user's password into a super-secret code and storing a de-crypter that will be able to match up a user's password, when they log in, to the encrypted password we'll store in our database. 
+For the time being, we will simply store a user's password in the database in its raw form. However, that is not safe! In an upcoming lesson, we'll learn about password encryption: the act of scrambling a user's password into a super-secret code and storing a de-crypter that will be able to match up a plaintext password entered by a user with the encrypted version stored in a database.
 
 ### Logging Out
 
-* What does it mean to log out? Conceptually, it means we are terminating the "session", the time in which a given user is interacting with our app. The action of "logging out" is really just the action of clearing all the data, including the user's ID, from the session hash. Luckily for us, there is already a Ruby method to empty a hash: `#clear`. 
+What does it mean to log out? Conceptually, it means we are terminating the session, the period of interaction between a given user and our app. The action of 'logging out' is really just the action of clearing all of the data, including the user's ID, from the `session` hash. Luckily for us, there is already a Ruby method for emptying a hash: `#clear`.
 
 ### User Registration
 
-Before a user can sign in, they need to sign up! What does it mean to "sign up"? A new user submits their information (for example, name, email and password) via a form. When that form gets submitted, a POST request is sent to a route defined in your controller. That route will have code that does the following: 
+Before a user can sign in, they need to sign up! What does it mean to 'sign up'? A new user submits their information (for example, their name, email, and password) via a form. When that form gets submitted, a `POST` request is sent to a route defined in the controller. That route will have code that does the following:
 
-1. Get the new user's name, email and password from the params. 
-2. Use that info to create and save a new user. For example: `User.create(name: params[:name], email: params[:email], password: params[:password])`.
-3. Lastly, once a user has "signed up", we should sign them in. It would be annoying if you had to create a new account on a site and *then* sign in right afterwards. So, in the same controller route in which we create a new user, we set the `session[:id]` equal to the new user's id, effectively logging them in. 
-4. Lastly, we redirect the user somewhere else, like their personal home page. 
+1. Gets the new user's name, email, and password from the `params` hash.
+2. Uses that info to create and save a new instance of `User`. For example: `User.create(name: params[:name], email: params[:email], password: params[:password])`.
+3. Signs the user in once they have completed the sign-up process. It would be annoying if you had to create a new account on a site and *then* sign in immediately afterwards. So, in the same controller route in which we create a new user, we set the `session[:id]` equal to the new user's ID, effectively logging them in.
+4. Finally, we redirect the user somewhere else, such as their personal homepage.
 
 ## Project Structure
 
 ### Our Project
 
-Our file structure looks like this: 
+Our file structure looks like this:
 
 ```bash
 -app
@@ -61,36 +61,35 @@ Our file structure looks like this:
 
 ### The `app` Folder 
 
-The `app` folder contains the models, views and controllers that make up the core of our Sinatra application. Get used to seeing this set up. It is conventional to group these files under an `app` folder. 
+The `app` folder contains the models, views and controllers that make up the core of our Sinatra application. Get used to seeing this setup. It is conventional to group these files under an `app` folder.
 
 #### Application Controller
 
-* The `get '/registrations/signup'` route. This route has one responsibility: render the sign up form view. This view can be found in `app/views/registrations/signup.erb`. Notice we have separate view sub-folders to correspond to the different controller action groupings.
+* The `get '/registrations/signup'` route has one responsibility: render the sign-up form view. This view can be found in `app/views/registrations/signup.erb`. Notice we have separate view sub-folders to correspond to the different controller action groupings.
 
-* The `post '/registrations'` route. This route is responsible for receiving the `POST` request that happens when a user hits "submit" on that signup form. It will have the code that gets the new user's info from the params, creates a new user, signs them in and then redirects them somewhere else. 
+* The `post '/registrations'` route is responsible for handling the `POST` request that is sent when a user hits 'submit' on the sign-up form. It will contain code that gets the new user's info from the `params` hash, creates a new user, signs them in, and then redirects them somewhere else.
 
-* The `get '/sessions/login'` route. This route is responsible for rendering the login form. 
+* The `get '/sessions/login'` route is responsible for rendering the login form.
 
-* The `post '/sessions'` route. This route is responsible for receiving the `POST` request that gets sent when a user hits "submit" on that login form. This route has the code that grabs the user's info from the params, finds that user from the database and signs that user in. 
-  
-* The `get '/sessions/logout'` route. This route is responsible for logging the user out by clearing the `session` hash. 
+* The `post '/sessions'` route is responsible for receiving the `POST` request that gets sent when a user hits 'submit' on the login form. This route contains code that grabs the user's info from the `params` hash, looks to match that info against the existing entries in the user database, and, if a matching entry is found, signs the user in.
 
-* The `get '/users/home'` route. This route is responsible for rendering the user's home page view. 
+* The `get '/sessions/logout'` route is responsible for logging the user out by clearing the `session` hash.
+
+* The `get '/users/home'` route is responsible for rendering the user's homepage view.
 
 #### The `models` Folder
 
-The models folder is pretty straightforward. It contains one file because we only have one model in this app: the `User` model. 
+The `models` folder is pretty straightforward. It contains one file because we only have one model in this app: `User`.
 
-The code in `app/models/user.rb` will be pretty basic. We'll validate some of the attributes of our user by writing code that makes sure no one can sign up without inputing their name, email and password. More on this later. 
+The code in `app/models/user.rb` will be pretty basic. We'll validate some of the attributes of our user by writing code that makes sure no one can sign up without inputting their name, email, and password. More on this later.
 
 #### The `views` Folder
 
-This folder has a few sub-folders we want to take a look at. Since we have our different controllers responsible for different functions/features, we want our view folder structure to match up. So, we have:
-
-* The **`views/registrations`** sub-directory. This directory has just one file, the template for the new user signup form. That template will be rendered by the `get '/registrations/signup'` route in our controller. This form will `POST` to the `post '/registrations'` route in our controller
-* The **`views/sessions`** sub-directory. This directory also has just one file, the template for the login form. This template is rendered by the `get '/sessions/login'` route in the controller. The form on this page `POST`s to the `post '/sessions'` route.
-* The **`views/users`** sub-directory. This directory has just one file, the template for the user's homepage. This page is rendered by the `get '/users/home'` route in the controller. 
-* We also have a `home.erb` file in the top level of the views directory. This is the page rendered by the root route, `get '/'`.
+This folder has a few sub-folders we want to take a look at. Since we have different controllers responsible for different functions/features, we want our `views` folder structure to match up.
+* The **`views/registrations`** sub-directory contains one file, the template for the new user sign-up form. That template will be rendered by the `get '/registrations/signup'` route in our controller. This form will `POST` to the `post '/registrations'` route in our controller.
+* The **`views/sessions`** sub-directory contains one file, the template for the login form. This template is rendered by the `get '/sessions/login'` route in the controller. The form on this page sends a `POST` request that is handled by the `post '/sessions'` route.
+* The **`views/users`** sub-directory contains one file, the template for the user's homepage. This page is rendered by the `get '/users/home'` route in the controller.
+* We also have a `home.erb` file in the top level of the `views` directory. This is the page rendered by the root route, `get '/'`.
 
 ### Part I: Models and Migrations
 
@@ -115,7 +114,7 @@ Let's think about the concept of validations...
 
 #### Step 1: The Root Path and the Homepage
 
-First things first, let's set up our root path and our home page. 
+First things first, let's set up our root path and our homepage. 
 
 * Open up `app/controllers/application_controller.rb` and check out the `get '/'` route. This route should render the `app/views/home.erb` page with the following code: 
 
@@ -126,11 +125,11 @@ erb :home
 
 ```bash
 ApplicationController
-  home page: GET /
+  homepage: GET /
     responds with a 200 status code
-    renders the home page view, 'home.erb'
+    renders the homepage view, 'home.erb'
 ```
-* Start up your app by running `shotgun` in the terminal. Visit the home page at `localhost:9393` and you should see message that welcomes you to Hogwarts and shows you a link to sign up and a link to log in.
+* Start up your app by running `shotgun` in the terminal. Visit the homepage at `localhost:9393` and you should see message that welcomes you to Hogwarts and shows you a link to sign up and a link to log in.
 
 * Let's look at the code behind this view. Open up that `app/views/home.erb` view and you should see the following
 
@@ -189,7 +188,7 @@ session[:id] = @user.id
 redirect '/users/home'
 ```
 
-Now that we've signed up and logged in our user, we want to take him or her to their home page. 
+Now that we've signed up and logged in our user, we want to take him or her to their homepage. 
 
 Go ahead and run the test suite again and you should see that *almost all* of the user sign up tests are passing. 
 
@@ -217,7 +216,7 @@ get '/users/home' do
 * Run the tests again and we should be passing *all* of our user sign up tests.
 
 #### Step 4: Logging In
-* Go back to your home page and look at the second of the two links:
+* Go back to your homepage and look at the second of the two links:
 
 ```ruby
 <a href="/sessions/login">Log In</a>
@@ -237,7 +236,7 @@ get '/users/home' do
 @user = User.find_by(email: params["email"], password: params["password"])
 session[:id] = @user.id
 ```
-* Notice that the last line of the route redirect the user to their home page. We already coded that route in the Users Controller to retrieve the current user based on the ID stored in `session[:id]`.
+* Notice that the last line of the route redirect the user to their homepage. We already coded that route in the Users Controller to retrieve the current user based on the ID stored in `session[:id]`.
 * Run the test suite again and you should be passing the user log in tests. 
 
 #### Step 5: Logging Out
@@ -270,7 +269,3 @@ There's a lot to think about here, but there are a few take-aways:
 Another important take-away from this lab is the flow of information between the different routes and views of an application. If you're still confused by the flow of signing up, logging out/logging in, try drawing it out. Can you map out where your web requests go from the point at which you click the "Sign Up" link all the way through until you sign up, log out and then even log back in? Give it a shot. 
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth' title='User Authentication in Sinatra'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-user-auth'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
