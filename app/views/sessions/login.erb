@@ -1,2 +1,9 @@
+<!-- #login form directing them to post '/sessions/login' -->
 <h1>Log In Below:</h1>
-
+<form action="/sessions" method="post">
+  <input type="text" name="name">
+  <input type="text" name="email">
+  <input type="text" name="password">
+  <!-- <label for="log_in">Log In</label> -->
+  <input type="submit" value="submit" id="Log In">
+</form>
