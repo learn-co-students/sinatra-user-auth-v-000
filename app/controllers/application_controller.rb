@@ -12,11 +12,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/registrations/signup' do
-    puts params
+    
     erb :'/registrations/signup'
   end
 
   post '/registrations' do 
+    puts params
     redirect '/users/home'
   end
 
