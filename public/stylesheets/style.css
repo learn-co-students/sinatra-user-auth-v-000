@@ -1,0 +1,49 @@
+@import 'https://fonts.googleapis.com/css?family=Lato';
+
+body {
+  background: url(../images/hogwarts_castle.jpg);
+  background-size: cover;
+  background-blend-mode: screen;
+  min-height: 100%;
+  background-attachment: fixed;
+  background-color: #39cccc;
+  font-family: 'Lato', sans-serif;
+}
+
+div {
+  width: 60%;
+  text-align: left;
+  margin: auto;
+}
+
+.signup, .login {
+  width: 100%;
+  text-align: left;
+  margin: auto;
+  float: left;
+}
+
+h1 {
+  text-align: left;
+  margin: auto;
+}
+
+label {
+  width: 8em;
+  text-align: left;
+  float: left;
+  margin: auto;
+  padding: 5px;
+}
+
+input, button {
+  width: 100%;
+  text-align: left;
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 5px;
+}
