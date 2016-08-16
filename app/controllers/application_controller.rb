@@ -15,7 +15,8 @@ class ApplicationController < Sinatra::Base
     erb :'/registrations/signup'
   end
 
-  post '/registrations' do 
+  post '/registrations' do
+    
     redirect '/users/home'
   end
 
@@ -34,6 +35,5 @@ class ApplicationController < Sinatra::Base
   get '/users/home' do
     erb :'/users/home'
   end
-
 
 end
