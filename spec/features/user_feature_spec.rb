@@ -11,7 +11,7 @@ describe "User sign up, log in, sign out" do
       click_link('Sign Up')
     end
 
-    it 'successfully signs up with a name, email and password' do 
+    it 'successfully signs up with a name, email, and password' do 
       expect(current_path).to eq('/registrations/signup')
       fill_in("name", :with => valid_user.name)
       fill_in("email", :with => valid_user.email)
@@ -49,7 +49,7 @@ describe "User sign up, log in, sign out" do
   end
 
   describe "user log out" do 
-    it 'successfully logs out and redirects to the home page' do 
+    it 'successfully logs out and redirects to the homepage' do 
       visit '/'
       click_link('Log In')
       fill_in("email", :with => valid_user.email)
