@@ -10,8 +10,6 @@ In this codealong lab, we'll build a Sinatra application that will will allow us
 2. Set up a root path and homepage for the application
 3. Build a user sign-up flow with a Users model that signs in and logs in a user
 4. Log out the user by clearing the `session` hash
-5. Build a Sinatra application with a Users model so that users can sign up for and sign in to your app.
-6. Learn how to use sessions to authorize, i.e., to log users in and out of a web application.
 
 ## User Authorization: Using Sessions
 
