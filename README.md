@@ -1,9 +1,17 @@
 # User Authentication in Sinatra
 
-# Objectives
+## Overview
 
-1. Build a Sinatra application with a Users model so that users can sign up for and sign in to your app.
-2. Learn how to use sessions to authorize, i.e., to log users in and out of a web application.
+In this codealong lab, we'll build a Sinatra application that will will allow users to sign up for, log into, and then log out of your application.
+
+## Objectives
+
+1. Explain how logging in to an application stores a user's ID into a `session` hash
+2. Set up a root path and homepage for the application
+3. Build a user sign-up flow with a Users model that signs in and logs in a user
+4. Log out the user by clearing the `session` hash
+5. Build a Sinatra application with a Users model so that users can sign up for and sign in to your app.
+6. Learn how to use sessions to authorize, i.e., to log users in and out of a web application.
 
 ## User Authorization: Using Sessions
 
