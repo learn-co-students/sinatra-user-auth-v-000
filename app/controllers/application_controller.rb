@@ -11,6 +11,11 @@ class ApplicationController < Sinatra::Base
     erb :home
   end
 
+  get '/users' do
+    @users = User.all
+    erb :index
+  end
+
   get '/registrations/signup' do
     erb :'/registrations/signup'
   end
@@ -32,7 +37,7 @@ class ApplicationController < Sinatra::Base
     redirect '/users/home'
   end
 
-  get '/sessions/logout' do 
+  get '/sessions/logout' do   
     session.clear
     redirect '/'
   end

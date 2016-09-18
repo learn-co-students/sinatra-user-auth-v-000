@@ -1,0 +1,4 @@
+<h3>All Users</h3>
+<% @users.each do |user| %>
+UserID: <%= user.id%> UserName:<%= user.name%>  Email:<%= user.email%>  PW: <%= user.password%><br>
+<%end%>
