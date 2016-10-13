@@ -1,4 +1,6 @@
-"Welcome, <%=@user.name%>!"
+"Welcome, <%= @user.name %>!"
 
-<a href="/sessions/logout">Log Out</a>
+<%= @user.email %>
+
+<a href="/sessions/logout" value="Log Out">Log Out</a>
 
