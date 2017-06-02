@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this codealong lab, we'll build a Sinatra application that will will allow users to sign up for, log into, and then log out of your application.
+In this codealong lab, we'll build a Sinatra application that will allow users to sign up for, log into, and then log out of your application.
 
 ## Objectives
 
@@ -275,3 +275,5 @@ There's a lot to think about here, but here are a few takeaways:
 Another important takeaway from this lab is a general understanding of the flow of information between the different routes and views of an application. If you're still confused by the flow of signing up and logging in/out, try drawing it out. Can you map out where your web requests go from the point at which you click the "Sign Up" link all the way through until you log out and then attempt to log back in? Give it a shot.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth' title='User Authentication in Sinatra'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-user-auth'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
