@@ -1,4 +1,4 @@
-"Welcome, <%=@user.name%>!"
+"Welcome, <%=User.find(session[:id]).name%>!"
 
 <a href="/sessions/logout">Log Out</a>
 
