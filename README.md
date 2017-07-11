@@ -269,9 +269,11 @@ There's a lot to think about here, but here are a few takeaways:
 
 * Separate out your views into sub-folders according to their different concerns / controller routes.
 * Signing up for an app is nothing more than submitting a form, grabbing data from the `params` hash, and using it to create a new user.
-* Logging in is nothing more that locating the correct user and setting the `:id` key in the `session` hash equal to their user ID.
+* Logging in is nothing more than locating the correct user and setting the `:id` key in the `session` hash equal to their user ID.
 * Logging out is accomplished by clearing all of the data from the `session` hash.
 
 Another important takeaway from this lab is a general understanding of the flow of information between the different routes and views of an application. If you're still confused by the flow of signing up and logging in/out, try drawing it out. Can you map out where your web requests go from the point at which you click the "Sign Up" link all the way through until you log out and then attempt to log back in? Give it a shot.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth' title='User Authentication in Sinatra'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-user-auth'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
