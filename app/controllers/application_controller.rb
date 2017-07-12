@@ -28,10 +28,6 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessions' do
-    #get user's info from params hash
-    #try to match info against user in database
-    #if match, sign user in
-    #then redirect
     @user = User.find_by(email: params["email"], password: params["password"])
     session[:id] = @user.id
     redirect '/users/home'
