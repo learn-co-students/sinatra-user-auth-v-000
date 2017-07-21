@@ -1,3 +1,10 @@
-<h1>Sign Up Below:</h1>
-
-
+<h1>sign up below:</h1>
+<!--It needs to POST data to the '/registrations' path, so your form action should be '/registrations' and your form method should be POST.-->
+<form method="POST" action="/registrations">
+  <!--Our signup form needs fields for name, email, and password. -->
+  <p><label for="name">Name: </label><input type="text" name="name"></p>
+  <p><label for="email">Email: </label><input type="text" name="email"></p>
+  <p><label for="password">Password: </label><input type="password" name="password"></p>
+  <!-- hit the "Sign Up" button.-->
+  <p><input type="submit" value="Sign Up"></p>
+</form>
