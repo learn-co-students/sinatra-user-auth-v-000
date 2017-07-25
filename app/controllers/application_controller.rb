@@ -28,10 +28,14 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessions' do
+    #binding.pry#receives the params from get request
+    @user = User.find_by(email: params["email"], password: params["password"])#username match params
     binding.pry
-    @user = User.find_by(email: params["email"], password: params["password"])#username match boolean
-    session[:id] = @user.id
-    redirect '/users/home'
+      if @user == nil
+          redirect '/'
+      else
+          redirect '/users/home'
+      end
   end
 
   get '/sessions/logout' do
