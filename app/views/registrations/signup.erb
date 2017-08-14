@@ -1,3 +1,14 @@
+<!-- Open up app/views/registrations/signup.erb. Our signup form needs 
+fields for name, email, and password. It needs to POST data to the 
+'/registrations' path, so your form action should be '/registrations' 
+and your form method should be POST.
+ -->
 <h1>Sign Up Below:</h1>
 
 
+<form method="POST" action="/registrations">
+  <p>Enter your name:<input type="text" id="name" name="name"></p>
+  <p>Enter your email:<input type="text" id="email" name="email"></p>
+  <p>Enter your password:<input type="text" id="password" name="password"></p>
+  <input type="submit" id="submit" value="Sign Up">
+</form>
