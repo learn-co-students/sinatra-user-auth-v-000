@@ -1,3 +1,15 @@
 <h1>Sign Up Below:</h1>
-
-
+<!-- Open up app/views/registrations/signup.erb. Our signup form needs fields for name, email, and password. It needs to POST data to the '/registrations' path, so your form action should be '/registrations' and your form method should be POST.
+Once you've written your form, go ahead and add the line puts params inside the post '/registrations' route in the controller. Then, fill out the form in your browser and hit the "Sign Up" button. -->
+<form method="post" action="/registrations">
+  <fieldset>
+    <legend>Hogwarts Enrollment</legend>
+    <label for="name">Name: <input id="name" type="text" name="name" /></label>
+    <br>
+    <label for="email">Email: <input id="email" type="email" name="email" /></label>
+    <br>
+    <label for="password">Password: <input id="password" type="password" name="password" /></label>
+    <br>
+    <input type="submit" value="Sign Up" />
+  </fieldset>
+</form>
