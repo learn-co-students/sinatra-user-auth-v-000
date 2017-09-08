@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "ApplicationController" do
   describe "homepage: GET /" do
-    
-    before(:each) do 
+
+    before(:each) do
       get '/'
     end
 
@@ -17,7 +17,7 @@ describe "ApplicationController" do
   end
 
   describe "sign-up page: GET /registrations/signup" do
-    
+
     before(:each) do
       get '/registrations/signup'
     end
@@ -32,7 +32,7 @@ describe "ApplicationController" do
   end
 
   describe "login page: GET /sessions/login" do
-    
+
     before(:each) do
       get '/sessions/login'
     end
@@ -47,7 +47,7 @@ describe "ApplicationController" do
   end
 
   describe "user's homepage: GET /users/home" do
-    
+
     it "responds with a 200 status code" do
       @user = User.create(:name => "Bitsy Flipsy", :email => "bitsy@hogwarts.edu", :password => "luminosity")
       visit 'sessions/login'
