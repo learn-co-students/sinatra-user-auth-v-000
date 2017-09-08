@@ -1,2 +1,8 @@
-<h1>Log In Below:</h1>
+<!-- * The **`views/sessions`** sub-directory contains one file, the template for the login form. This template is rendered by the `get '/sessions/login'` route in the controller. The form on this page sends a `POST` request that is handled by the `post '/sessions'` route. -->
 
+<h1>Log In Below:</h1>
+<form class="" action="/sessions" method="post">
+  <p>Email: <input type="text" name="email" value=""></p>
+  <p>Password: <input type="text" name="password" value=""></p>
+  <input type="submit" value="Log In">
+</form>
