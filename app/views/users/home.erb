@@ -1,4 +1,18 @@
-"Welcome, <%=@user.name%>!"
+<DOCTYPE! html>
+  <head>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
 
-<a href="/sessions/logout">Log Out</a>
+    <style>
+    body {
+      margin-top:15%;
+      text-align: center;
+    }
+    </style>
+  </head>
 
+  <body>
+    "Welcome, <%=@user.name%>!"
+    <a href="/sessions/logout">Log Out</a>
+  </body>
+</html>

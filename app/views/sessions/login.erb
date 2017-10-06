@@ -1,2 +1,22 @@
-<h1>Log In Below:</h1>
+<DOCTYPE! html>
+  <head>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
 
+    <style>
+    body {
+      margin-top:15%;
+      text-align: center;
+    }
+    </style>
+  </head>
+
+  <body>
+    <h1>Log In Below:</h1>
+    <form method=POST action='/sessions'>
+       Email: <input type="text" name="email"><br>
+       Password: <input type="text" name="password"><br>
+       <input type="submit" value="Log In">
+    </form>
+  </body>
+</html>
