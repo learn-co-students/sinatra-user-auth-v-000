@@ -1,2 +1,11 @@
 <h1>Log In Below:</h1>
-
+<!-- The form on this page sends a POST request that is handled by the post '/sessions' route. -->
+<form method="POST" action="/sessions">
+  <label>Email:</label>
+  <input type="text" name="email"/>
+  <br>
+  <label>Password:</label>
+  <input type="text" name="password"/>
+  <br>
+<input type="submit" value="Log In"/>
+</form>
