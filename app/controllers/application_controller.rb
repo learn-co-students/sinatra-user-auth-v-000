@@ -1,42 +1,55 @@
 class ApplicationController < Sinatra::Base
-  register Sinatra::ActiveRecordExtension
-  set :views, Proc.new { File.join(root, "../views/") }
+    register Sinatra::ActiveRecordExtension
+    set :views, Proc.new { File.join(root, "../views/") }
 
-  configure do
-    enable :sessions
-    set :session_secret, "secret"
-  end
+    configure do
+        enable :sessions
+        set :session_secret, "secret"
+    end
 
-  get '/' do 
-    erb :home
-  end
+    get '/' do 
 
-  get '/registrations/signup' do
-    erb :'/registrations/signup'
-  end
+        erb :home
+    end
 
-  post '/registrations' do
-    
-    redirect '/users/home'
-  end
+    get '/registrations/signup' do
+        erb :'/registrations/signup'
+    end
 
-  get '/sessions/login' do
-    erb :'sessions/login'
-  end
+    post '/registrations' do
+        puts params
+        @user = User.new(name: params[:name], email: params[:email], password: params[:password])
+        @user.save
+        session[:id] = @user.id
+        redirect '/users/home'
+    end
 
-  post '/sessions' do
-    
-    redirect '/users/home'
-  end
+    get '/sessions/login' do
+        erb :'sessions/login'
+    end
 
-  get '/sessions/logout' do 
+    post '/sessions' do
+        puts params
+        @user = User.find_by(email: params[:email], password: params[:password])
+        if @user
+            session[:id] = @user.id
+            redirect '/users/home'
+        else
+            redirect '/registrations/signup'
+        end
+    end
 
-    redirect '/'
-  end
+    get '/sessions/logout' do 
+        session.clear
+        redirect '/'
+    end
 
-  get '/users/home' do
-   
-    erb :'/users/home'
-  end
+    get '/users/home' do
+
+        @user = User.find(session[:id])
+
+        erb :'/users/home'
+
+    end
 
 end
