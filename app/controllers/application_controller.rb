@@ -32,12 +32,14 @@ class ApplicationController < Sinatra::Base
 
   post '/sessions' do
     #receive Post request, code to grab users info from params hash, match that info against the etnries in db, and if ===, sign in user
-
+    @user = User.find_by(email: params["email"], password: params[:password])
+    session[:id] = @user.id
     redirect '/users/home'
   end
 
   get '/sessions/logout' do
-    #clear the session hash
+    #clear the session 
+    session.clear
     redirect '/'
   end
 
