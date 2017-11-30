@@ -18,10 +18,10 @@ class ApplicationController < Sinatra::Base
   post '/registrations' do
 
     puts params
-    binding.pry
 
     @user = User.new(name: params["name"], email: params["email"], password: params["password"])
     @user.save
+    binding.pry
 
     session[:id] = @user.id
 
@@ -42,6 +42,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/sessions/logout' do
+
+    session.clear
 
     redirect '/'
   end
