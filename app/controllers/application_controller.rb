@@ -18,9 +18,8 @@ class ApplicationController < Sinatra::Base
   post '/registrations' do
 
     puts params
-    binding.pry
 
-    @user = User.create(params)
+    # @user = User.create(params)
 
     redirect '/users/home'
   end
@@ -40,6 +39,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/home' do
+    binding.pry
+      @user = User.create(params)
 
     erb :'/users/home'
   end
