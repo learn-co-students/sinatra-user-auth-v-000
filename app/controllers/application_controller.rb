@@ -28,17 +28,17 @@ class ApplicationController < Sinatra::Base
 
   post '/sessions' do
     @user = User.find_by(params[:user])
-    # binding.pry
-    sesssion[:id] = @user.id
+    session[:id] = @user.id
     redirect '/users/home'
   end
 
   get '/sessions/logout' do
-
+    session.clear
     redirect '/'
   end
 
   get '/users/home' do
+    # binding.pry
     @user = User.find(session[:id])
     erb :'/users/home'
   end
