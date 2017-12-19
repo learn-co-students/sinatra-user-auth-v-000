@@ -1,3 +1,21 @@
 <h1>Sign Up Below:</h1>
 
 
+<form method="POST" action="/registrations">
+        <p>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name='name'></input>
+        </p>
+        <p>
+          <label for="email">email:</label>
+          <input type="text" id="email" name='email'></input>
+        </p>
+        <p>
+          <label for="password">password:</label>
+          <input type="text" id="password" name='password'></input>
+        </p>
+
+    <p><button type="submit" value="submit">Sign Up</p> <!--capybara reuires this style of button
+            if not using capybara you could have used          <input type="submit">
+      -->
+</form>

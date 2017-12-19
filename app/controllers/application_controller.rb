@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret"
   end
 
-  get '/' do 
+  get '/' do
     erb :home
   end
 
@@ -16,7 +16,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registrations' do
-    
+
+    @user = User.new(name: params["name"], email: params["email"], password: params["password"])
+    @user.save #save to database
+    #now set the session id as the user id
+    session[:id] = @user.id
+
+  #  binding.pry
     redirect '/users/home'
   end
 
@@ -25,18 +31,20 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessions' do
-    
+    @user = User.find_by(email: params["email"], password: params["password"])
+    session[:id] = @user.id
     redirect '/users/home'
   end
 
-  get '/sessions/logout' do 
-
+  get '/sessions/logout' do
+    session.clear #clears the session to logout
     redirect '/'
   end
 
   get '/users/home' do
-   
-    erb :'/users/home'
+  #  binding.pry
+      @user = User.find(session[:id])
+      erb :'/users/home'
   end
 
 end

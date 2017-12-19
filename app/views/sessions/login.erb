@@ -1,2 +1,20 @@
 <h1>Log In Below:</h1>
 
+
+
+
+<form method="POST" action="/sessions">
+
+        <p>
+          <label for="email">email:</label>
+          <input type="text" id="email" name='email'></input>
+        </p>
+        <p>
+          <label for="password">password:</label>
+          <input type="text" id="password" name='password'></input>
+        </p>
+
+    <p><button type="submit" value="submit">Log In</p> <!--capybara reuires this style of button
+            if not using capybara you could have used          <input type="submit">
+      -->
+</form>
