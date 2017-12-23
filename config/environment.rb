@@ -10,3 +10,7 @@ ActiveRecord::Base.establish_connection(
 
 Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
 Dir[File.join(File.dirname(__FILE__), "../app/controllers", "*.rb")].each {|f| require f}
+
+configure :development do
+  set :database, 'sqlite3:db/users.db'
+end
