@@ -7,35 +7,35 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret"
   end
 
-  get '/' do 
+  get '/' do
     erb :home
   end
 
-  get '/registrations/signup' do
+  get '/registrations/signup' do #render the signup form view (signup.erb)
     erb :'/registrations/signup'
   end
 
-  post '/registrations' do
-    
+  post '/registrations' do #handle the POST request from the signup form
+    #User.create(name: params[:name], params[:email]), etc.
     redirect '/users/home'
   end
 
-  get '/sessions/login' do
+  get '/sessions/login' do #renders the login form (login.erb)
     erb :'sessions/login'
   end
 
-  post '/sessions' do
-    
+  post '/sessions' do #receives POST request from submit in login.erb
+    #grabs user info from params hash, see registration above
     redirect '/users/home'
   end
 
-  get '/sessions/logout' do 
-
+  get '/sessions/logout' do #logout the user
+    #.clear the session hash
     redirect '/'
   end
 
-  get '/users/home' do
-   
+  get '/users/home' do #render the user's homepage view (home.erb)
+
     erb :'/users/home'
   end
 
