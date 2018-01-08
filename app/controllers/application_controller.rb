@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registrations' do #handle the POST request from the signup form
-    #User.create(name: params[:name], params[:email]), etc.
+    puts params
     redirect '/users/home'
   end
 
