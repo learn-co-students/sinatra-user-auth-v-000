@@ -1,3 +1,32 @@
-<h1>Sign Up Below:</h1>
+<!doctype html>
 
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>New Blog</title>
+  <style>
+    input {
+      margin: 5px
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Sign Up Below</h1>
+  <form action="/registrations" method="post">
+  
+    <label for="name">Name: </label>
+    <input type="text" name="user[name]" id="name" /><br>
+    
+    <label for="email">Email: </label>
+    <input type="text" name="user[email]" id="email" /><br>
+
+    <label for="password">Password: </label>
+    <input type="text" name="user[password]" id="password" /><br>
+    
+    <br>
+    <input type="submit" id="sign up" value="Sign Up"/> 
+  </form>
+</body>
+</html>
 

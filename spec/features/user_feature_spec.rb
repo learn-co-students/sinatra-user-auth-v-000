@@ -44,7 +44,7 @@ describe "User sign up, log in, sign out" do
       fill_in("password", :with => "wrong")
       click_button('Log In')
       expect(current_path).to eq('/sessions')
-      expect(page).to have_content("undefined method `id' for nil:NilClass")
+      expect(page).to have_content("User not found")
     end
   end
 
