@@ -1,5 +1,6 @@
 # User Authentication in Sinatra
 
+
 ## Overview
 
 In this codealong lab, we'll build a Sinatra application that will allow users to sign up for, log into, and then log out of your application.

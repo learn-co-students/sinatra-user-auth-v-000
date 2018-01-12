@@ -1,2 +1,26 @@
-<h1>Log In Below:</h1>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>New Blog</title>
+  <style>
+    input {
+      margin: 5px
+    }
+  </style>
+</head>
 
+<body>
+  <h1>Log In Below</h1>
+  <form action="/sessions" method="post">
+
+    <label for="email">Email: </label>
+    <input type="text" name="user[email]" id="email" /><br>
+
+    <label for="password">Password: </label>
+    <input type="text" name="user[password]" id="password" /><br>
+    
+    <br>
+    <input type="submit" id="Log In" value="Log In"/> 
+  </form>
+</body>
+</html>
