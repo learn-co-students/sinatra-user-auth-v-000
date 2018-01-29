@@ -41,4 +41,15 @@ class ApplicationController < Sinatra::Base
     erb :'/users/home'
   end
 
+  post '/sessions/login' do
+    @user = User.find_by(email: params["email"], password: params["password"])
+    if !!@user == true
+      @user.save
+      session[:id] = @user.id
+      redirect '/users/home'
+    else
+      #binding.pry
+      erb :'/users/home'
+    end
+  end
 end
