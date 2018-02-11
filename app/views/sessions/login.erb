@@ -1,2 +1,12 @@
 <h1>Log In Below:</h1>
 
+<form action='/sessions' method='post'>
+    <% ["email", "password"].each do |field_name| %>
+        <div class="labeled_form_field">
+            <label for=<%= field_name %>><%= field_name.capitalize %></>
+            <input type='text' name=<%= field_name %> id=<%= field_name %> />
+        </div>
+    <% end %>
+
+    <input type='submit' id='submit' value='Log In' />
+</form>
