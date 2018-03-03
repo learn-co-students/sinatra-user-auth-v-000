@@ -1,0 +1,67 @@
+class ApplicationController < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
+  set :views, Proc.new { File.join(root, "../views/") }
+
+  configure do
+    enable :sessions
+    set :session_secret, "secret"
+  end
+
+  get '/' do
+    erb :home
+  end
+
+  get '/registrations/signup' do
+    erb :'/registrations/signup'
+  end
+
+  post '/registrations' do
+
+    redirect '/users/home'
+  end
+
+  get '/sessions/login' do
+    erb :'sessions/login'
+  end
+
+  post '/sessions' do
+
+    redirect '/users/home'
+  end
+
+  get '/sessions/logout' do
+
+    redirect '/'
+  end
+
+  get '/users/home' do
+    erb :'/users/home'
+  end
+
+end
+************************
+class User < ActiveRecord::Base
+  attr_accessor :name, :email, :password
+  validates_presence_of :name, :email, :password
+end
+*******************
+signup.erb
+<h1>Sign Up Below:</h1>
+<form action="/registrations" method="post">
+  <input type="text" name="name" id="name">
+  <input type="text" name="email" id="email">
+  <input type="password" name="password" id="password">
+  Submit: <button type="submit" value="Sign Up">Sign Up </button><br>
+</form>
+*******************8
+login.erb
+<h1>Log In Below:</h1>
+<form method="post" action="/sessions">
+  Email:
+  <input type="text" name="email"><br>
+  Password:
+  <input type="password" name="password"><br>
+  Submit:
+  <input type="submit" value="Log In">
+</form>
+************************
