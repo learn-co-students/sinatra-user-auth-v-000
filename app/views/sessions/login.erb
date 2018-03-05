@@ -1,2 +1,21 @@
-<h1>Log In Below:</h1>
-
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Authentication in Sinatra</title>
+   </head>
+   <body>
+      <h1>Log In Below:</h1>
+      <form action="/sessions" method="post">
+         <p>Name:
+            <input type="text" name="name" value="">
+         </p>
+         <p>Email:
+            <input type="text" name="email" id="email"></p>
+         <p>Password:
+            <input type="text" name="password" value="">
+         </p>
+         <input type="submit" name="Log In" value="Log In">
+      </form>
+   </body>
+</html>
