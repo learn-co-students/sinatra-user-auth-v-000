@@ -3,19 +3,19 @@ class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   set :views, Proc.new { File.join(root, "../views/") }
 
-  ------- #Sessions
+  #---------- #Sessions
   configure do
     enable :sessions
     set :session_secret, "secret"
   end
-  ---------------------------------------------------------
+  #--------------------------------------------------------
 
   
   #==================== HOME ==============================
   get '/' do 
     erb :home
   end
-  ---------------------------------------------------------
+  #--------------------------------------------------------
 
 
   #==================== SIGN UP ===========================
@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
     session[:id] = @user.id
     redirect '/users/home'
   end
-  ---------------------------------------------------------
+  #--------------------------------------------------------
 
 
   #==================== LOGIN =============================
@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
     session[:id] = @user.id
     redirect '/users/home'
   end
-  ---------------------------------------------------------
+  #--------------------------------------------------------
 
   
   #==================== LOGOUT ============================
@@ -55,6 +55,6 @@ class ApplicationController < Sinatra::Base
    @user = User.find(session[:id])
     erb :'/users/home'
   end
-  ---------------------------------------------------------
+  #--------------------------------------------------------
 
 end
