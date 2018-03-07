@@ -33,6 +33,7 @@ session[:id] = @user.id
   end
 
   get '/sessions/logout' do
+    session.clear
     redirect '/'
   end
 
