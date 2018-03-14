@@ -32,7 +32,7 @@ describe "ApplicationController" do
     end
   end
 
-  describe "log-in page: GET /sessions/login" do
+  describe "login page: GET /sessions/login" do
 
 
     before(:each) do
@@ -49,7 +49,7 @@ describe "ApplicationController" do
     end
   end
 
-  describe "user's home page: GET /users/home" do
+  describe "user's homepage: GET /users/home" do
 
 
     it "responds with a 200 status code" do
