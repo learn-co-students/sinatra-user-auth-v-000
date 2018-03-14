@@ -25,17 +25,14 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessions' do
-    
     redirect '/users/home'
   end
 
   get '/sessions/logout' do 
-
     redirect '/'
   end
 
   get '/users/home' do
-   
     erb :'/users/home'
   end
 

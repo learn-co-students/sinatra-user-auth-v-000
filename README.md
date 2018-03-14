@@ -40,6 +40,23 @@ Before a user can sign in, they need to sign up! What does it mean to 'sign up'?
 
 ## Project Structure
 
+### Multiple Controllers for Multiple Features
+
+In the MVC (model/view/controller) framework, we know that the controller is responsible for defining behaviors of each route. For example, if user visits `www.example.com/hello-world` and sees the message `"Hello World!"`, we know that the corresponding controller has some code in it that looks like this: 
+
+```ruby
+# controller file
+
+get '/hello-word' do 
+  "Hello World!"
+end
+```
+
+So far, we've become comfortable with applications that have one controller file, often named something like `app.rb`. That file has been responsible for handling all of the routes of a given application. In this exercise, we'll be writing a number of different controllers, each of which handle routes pertaining to different features. For example, when a user "signs up" for you app, we consider that to be a new registration. When a user signs in or out of your app, we consider them to be creating and terminating a session. These are different functions and therefore the routes that that rely on will be coded in different controller files. 
+
+Before we get started writing any code, let's go through our project structure. It's important to understand the set-up of our different files and the reasoning behind it. 
+
+
 ### Our Project
 
 Our file structure looks like this:
@@ -61,9 +78,8 @@ Our file structure looks like this:
 -config
 -db
 -spec
-...
+...       
 ```
-
 
 ### The `app` Folder 
 
@@ -96,6 +112,7 @@ This folder has a few sub-folders we want to take a look at. Since we have diffe
 * The **`views/sessions`** sub-directory contains one file, the template for the login form. This template is rendered by the `get '/sessions/login'` route in the controller. The form on this page sends a `POST` request that is handled by the `post '/sessions'` route.
 * The **`views/users`** sub-directory contains one file, the template for the user's homepage. This page is rendered by the `get '/users/home'` route in the controller.
 * We also have a `home.erb` file in the top level of the `views` directory. This is the page rendered by the root route, `get '/'`.
+
 
 ### Part I: Models and Migrations
 
@@ -233,6 +250,7 @@ end
 * Open up `app/views/sessions/login.erb`. We need a form that sends a `POST` request to `/sessions` and has input fields for email and password. Don't forget to add a submit button that says 'Log In'. Then, to test that everything is working as expected, place the line `puts params` in the `post '/sessions'` route. In your browser, fill out the form and hit 'Log In'.
 * In your terminal, you should see the outputted `params` hash looking something like this (but with whatever information you entered into the login form):
 
+
 ```bash
 {"email"=>"beini@bee.com", "password"=>"password"}
 ```
@@ -274,4 +292,6 @@ There's a lot to think about here, but here are a few takeaways:
 
 Another important takeaway from this lab is a general understanding of the flow of information between the different routes and views of an application. If you're still confused by the flow of signing up and logging in/out, try drawing it out. Can you map out where your web requests go from the point at which you click the "Sign Up" link all the way through until you log out and then attempt to log back in? Give it a shot.
 
+
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-user-auth' title='User Authentication in Sinatra'>User Authentication in Sinatra</a> on Learn.co and start learning to code for free.</p>
+
