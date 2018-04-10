@@ -6,7 +6,7 @@ require 'capybara/rspec'
 require 'capybara/dsl'
 
 #if defined?(ActiveRecord::Migrator) && ActiveRecord::Migrator.needs_migration?
-  #raise 'Migrations are pending run `rake db:migrate SINATRA_ENV=test` to resolve the issue.'
+#  raise 'Migrations are pending run `rake db:migrate SINATRA_ENV=test` to resolve the issue.'
 #end
 
 RSpec.configure do |config|
