@@ -11,12 +11,12 @@ class ApplicationController < Sinatra::Base
     erb :home
   end
 
-  get '/registrations/signup' do
+  get '/registrations/signup' do  # render sign up page
     erb :'/registrations/signup'
   end
 
   post '/registrations' do
-    #User infor in posted here
+    #User infor in posted here after "submit button"
     @user = User.new(name: params["name"],
             email: params["email"],
             password: params["password"])
@@ -26,24 +26,27 @@ class ApplicationController < Sinatra::Base
     redirect '/users/home'
   end
 
-  get '/sessions/login' do
+  get '/sessions/login' do  #render the log in form
     erb :'sessions/login'
   end
 
   post '/sessions/login' do
-    # get the information put in and look for the ID that match
+    #handles logged in input of user from the params / Match that infor
+    # with existing entries in the user database.
   @user = User.find_by(email: params["email"], password: params["password"])
   session[:id] = @user.id
-   #if  Id match... redirect user to there home page
+   #if  entrie matches, user is logged in
     redirect '/users/home'
   end
 
   get '/sessions/logout' do
+    # log user out by clearing the session
       session.clear
     redirect '/'
   end
 
   get '/users/home' do
+    #Render the users home page
     @user = User.find(session[:id])
 
     erb :'/users/home'
