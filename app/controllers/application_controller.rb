@@ -7,6 +7,7 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret"
   end
 
+# :notes the user id are created automaticly.
   get '/' do
     erb :home
   end
@@ -46,7 +47,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/home' do
-    #Render the users home page
+    #Render the users home page based on id.
     @user = User.find(session[:id])
 
     erb :'/users/home'
