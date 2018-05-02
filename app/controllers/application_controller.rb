@@ -18,6 +18,7 @@ class ApplicationController < Sinatra::Base
 
   post '/registrations' do
     #User infor in posted here after "submit button"
+    # we are creating a new account which get an ID automatic because of our data base
     @user = User.new(name: params["name"],
             email: params["email"],
             password: params["password"])
