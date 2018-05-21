@@ -23,13 +23,13 @@ class ApplicationController < Sinatra::Base
             email: params["email"],
             password: params["password"])
         #then it saved and giving an ID.
-            @user.save
-            session[:id] = @user.id
-    redirect '/users/home'
+      @user.save
+      session[:id] = @user.id
+    redirect '/users/home'  # this is in another folder
   end
 
   get '/sessions/login' do  #render the log in form
-    erb :'sessions/login'
+    erb :'sessions/login' # this is located in another folder
   end
 
   post '/sessions/login' do
@@ -49,6 +49,7 @@ class ApplicationController < Sinatra::Base
 
   get '/users/home' do
     #Render the users home page based on id.
+    # based on if the registrations and login lead to matching creditials
     @user = User.find(session[:id])
 
     erb :'/users/home'
