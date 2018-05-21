@@ -9,6 +9,7 @@ gem 'require_all'
 gem 'sqlite3'
 gem 'thin'
 gem 'shotgun'
+gem 'tux'
 gem 'pry'
 
 group :test do
