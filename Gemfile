@@ -2,7 +2,7 @@
 source "https://rubygems.org"
 
 gem 'sinatra'
-gem 'activerecord'
+# gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'rake'
 gem 'require_all'
@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
+gem 'activerecord', '4.2', :require => 'active_record'
 
 group :test do
   gem 'launchy'
