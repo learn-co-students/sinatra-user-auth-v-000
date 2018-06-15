@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "ApplicationController" do
   describe "homepage: GET /" do
-    
-    before(:each) do 
+
+    before(:each) do
       get '/'
     end
 
@@ -17,7 +17,7 @@ describe "ApplicationController" do
   end
 
   describe "sign-up page: GET /registrations/signup" do
-    
+
     before(:each) do
       get '/registrations/signup'
     end
@@ -32,13 +32,14 @@ describe "ApplicationController" do
   end
 
   describe "login page: GET /sessions/login" do
-    
+
     before(:each) do
       get '/sessions/login'
     end
 
     it "responds with a 200 status code" do
       expect(last_response).to be_ok
+      # binding.pry
     end
 
     it "renders the sign-up template" do
@@ -47,7 +48,7 @@ describe "ApplicationController" do
   end
 
   describe "user's homepage: GET /users/home" do
-    
+
     it "responds with a 200 status code" do
       @user = User.create(:name => "Bitsy Flipsy", :email => "bitsy@hogwarts.edu", :password => "luminosity")
       visit 'sessions/login'
@@ -55,6 +56,8 @@ describe "ApplicationController" do
       fill_in(:password, :with => "luminosity")
       click_button "Log In"
       visit '/users/home'
+      # binding.pry
+
       expect(page.status_code).to eq(200)
     end
 
