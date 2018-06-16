@@ -21,3 +21,20 @@ rake db:setup               # Creates the database, loads the schema, and initia
 rake db:structure:dump      # Dumps the database structure to db/structure.sql
 rake db:structure:load      # Recreates the databases from the structure.sql file
 rake db:version             # Retrieves the current schema version number
+
+# db:create
+# db:create_migration
+# db:drop
+# db:fixtures:load
+# db:migrate
+# db:migrate:status
+# db:rollback
+# db:schema:cache:clear
+# db:schema:cache:dump
+# db:schema:dump
+# db:schema:load
+# db:seed
+# db:setup
+# db:structure:dump
+# db:structure:load
+# db:version
