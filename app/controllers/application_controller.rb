@@ -19,7 +19,6 @@ class ApplicationController < Sinatra::Base
     @user = User.new(name: params["name"], email: params["email"], password: params["password"])
     @user.save
     session[:id] = @user.id
-    puts params
     redirect '/users/home'
   end
 
@@ -35,7 +34,6 @@ class ApplicationController < Sinatra::Base
     else 
       redirect '/sessions/login'
     end
-    puts params
   end
 
   get '/sessions/logout' do 
