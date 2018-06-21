@@ -1,4 +1,5 @@
 require 'bundler/setup'
+require 'active_record'
 Bundler.require
 
 ENV['SINATRA_ENV'] ||= "development"
