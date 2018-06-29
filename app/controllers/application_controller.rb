@@ -16,7 +16,10 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registrations' do
-
+    puts params
+    @user = User.new(name: params["name"], email: params["email"], password: params["password"]) #make a new user object
+    @user.save #save user to the database using ActiveRecords .save instance method.
+    session[:id]=@user.id #use the session hash, accesible because we turned it on, to equal the user object's id
     redirect '/users/home'
   end
 
@@ -25,17 +28,22 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessions' do
-
-    redirect '/users/home'
+    @user=User.find_by(params)
+    if @user==nil
+      redirect '/sessions/login'
+    else
+      session[:id]=@user.id
+      redirect '/users/home'
+    end
   end
 
-  get '/sessions/logout' do 
-
+  get '/sessions/logout' do
+    session.clear
     redirect '/'
   end
 
   get '/users/home' do
-
+    @user=User.find(session[:id]) #use the ActiveRecord.find(id) method to get the right user based on the session.
     erb :'/users/home'
   end
 
