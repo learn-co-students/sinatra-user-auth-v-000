@@ -2,14 +2,22 @@
 source "https://rubygems.org"
 
 gem 'sinatra'
-gem 'activerecord'
+#gem 'activerecord'
 gem 'sinatra-activerecord'
+gem 'activerecord', '4.2', :require => 'active_record' #told to add this
 gem 'rake'
 gem 'require_all'
 gem 'sqlite3'
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
+
+group :development do  #my addition
+    gem 'shotgun'
+    gem 'pry'
+    gem 'tux'
+    gem 'sqlite3'
+end
 
 group :test do
   gem 'launchy'
