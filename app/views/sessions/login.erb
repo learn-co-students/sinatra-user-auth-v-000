@@ -1,2 +1,7 @@
 <h1>Log In Below:</h1>
-
+<form action="/sessions" method="POST">
+<p><label for="email">Email: </label><input type="text" id="email" value="email" name="email"></p>
+<p><label for="password">Password: </label><input type="text" id="password" value="password" name="password"></p>
+<p><input type="submit" value="Log In"></p>
+<p><a href="/sessions/logout"> Log Out </a></p>
+</form>
