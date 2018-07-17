@@ -31,7 +31,6 @@ class ApplicationController < Sinatra::Base
       session[:id] = @user.id
       redirect '/users/home'
     else
-      "Sorry, that login attempt failed. Please try again."
       redirect 'sessions/login'
     end
   end
