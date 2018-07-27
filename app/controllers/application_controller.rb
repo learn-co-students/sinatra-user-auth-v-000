@@ -4,6 +4,7 @@ class ApplicationController < Sinatra::Base
 
   configure do
     enable :sessions
+    disable :show_exceptions
     set :session_secret, "secret"
   end
 
@@ -12,14 +13,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/registrations/signup' do
-# binding.pry
     erb :'/registrations/signup'
   end
 
   post '/registrations' do
     @user = User.create(name: params[:name], email: params[:email], password: params[:password])
-    # @user.id = params[:id]
-    binding.pry
+    @user.id = params[:id]
 
     redirect '/users/home'
   end
@@ -30,8 +29,8 @@ class ApplicationController < Sinatra::Base
 
   post '/sessions' do
     @user = User.find_by(email: params[:email], password: params[:password])
-    # binding.pry
     session[:id] = @user[:id]
+    @session = session
 
     redirect '/users/home'
   end
@@ -42,7 +41,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/home' do
-    @user
+    # @user
     erb :'/users/home'
   end
 
