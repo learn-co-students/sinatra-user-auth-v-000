@@ -12,7 +12,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/registrations/signup' do
-    User.create(name: params[:name], email: params[:email], password: params[:password])
 # binding.pry
     erb :'/registrations/signup'
   end
@@ -43,7 +42,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/home' do
-
+    @user
     erb :'/users/home'
   end
 
