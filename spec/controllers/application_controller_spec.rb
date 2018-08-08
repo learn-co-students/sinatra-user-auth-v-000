@@ -34,7 +34,6 @@ describe "ApplicationController" do
 
   describe "login page: GET /sessions/login" do
 
-
     before(:each) do
       get '/sessions/login'
     end
