@@ -1,2 +1,11 @@
 <h1>Log In Below:</h1>
 
+<!-- rendered by the get '/session/login' route -->
+<!-- sends a post request that is handled by the post '/registrations' route -->
+
+<form action="/sessions" method="post">
+  <label for="user_email">Email: </label><input type="text" name="email"><br>
+  <label for="user_password">Password: </label><input type="password" name="password"><br>
+  <br>
+  <button type="submit" name="button">Log In</button>
+</form>
