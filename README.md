@@ -114,8 +114,6 @@ User
   is invalid without an password
 ```
 
-Let's think about the concept of validations...
-
 ### Part II: Controllers and Views
 
 #### Step 1: The Root Path and the Homepage
