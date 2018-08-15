@@ -103,7 +103,7 @@ Our `User` model has a few attributes: a name, email, and password.
 
 #### Step 1: Migration
 
-Write a migration that creates a `Users` table with columns for name, email, and password. Run `rake db:migrate` and then run your test suite.
+Write a migration that creates a `Users` table with columns for name, email, and password. Run `rake db:migrate SINATRA_ENV=test` and then run your test suite.
 
 You'll see that you're passing a number of tests, including these:
 
