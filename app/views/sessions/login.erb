@@ -1,2 +1,33 @@
-<h1>Log In Below:</h1>
 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sign Up</title>
+        <style>
+            body {
+                background-color: pink;
+            }
+
+            h1 {
+                color: blue;
+            }
+
+            .form {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Log In Below:</h1>
+        <div class="form">
+            <form method="POST" action="/sessions">
+                <label for="emal">Email: </label>
+                <input type="email" name="email" id="email"><br>
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password" minlength="8" ><br>
+                <input type="submit" value="Log In">
+            </form>
+        </div>
+    </body>
+</html>
