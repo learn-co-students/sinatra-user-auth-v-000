@@ -55,6 +55,7 @@ describe "ApplicationController" do
       fill_in(:password, :with => "luminosity")
       click_button "Log In"
       visit '/users/home'
+      
       expect(page.status_code).to eq(200)
     end
 
