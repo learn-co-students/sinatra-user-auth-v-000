@@ -11,6 +11,10 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 
+group :development do
+    gem 'tux'
+end
+
 group :test do
   gem 'launchy'
   gem 'rspec'
