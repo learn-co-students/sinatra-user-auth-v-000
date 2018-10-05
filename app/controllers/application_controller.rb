@@ -16,25 +16,38 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registrations' do
+    @user = User.create(params)
+    session[:id] = @user.id
 
     redirect '/users/home'
   end
 
   get '/sessions/login' do
+    puts params
     erb :'sessions/login'
   end
 
   post '/sessions' do
+    if @user = User.find_by(email: params["email"], password: params["password"])
+      session.clear
+      session[:id] = @user.id
 
-    redirect '/users/home'
+      redirect '/users/home'
+    else
+      @error =  "Incorrect Password. Redirecting to Login page in 5 seconds..."
+      sleep 5
+      redirect '/sessions/login'
+    end
   end
 
   get '/sessions/logout' do 
+    session.clear
 
     redirect '/'
   end
 
   get '/users/home' do
+    @user = User.find(session[:id])
 
     erb :'/users/home'
   end
