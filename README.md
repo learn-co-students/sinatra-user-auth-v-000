@@ -65,7 +65,7 @@ Our file structure looks like this:
 ```
 
 
-### The `app` Folder 
+### The `app` Folder
 
 The `app` folder contains the models, views and controllers that make up the core of our Sinatra application. Get used to seeing this setup. It is conventional to group these files under an `app` folder.
 
@@ -226,7 +226,7 @@ end
 <a href="/sessions/login">Log In</a>
 ```
 
-* This is a link to the `get '/sessions/login'` route. Checkout the two routes defined in the controller for logging in and out. We have a `get '/sessions/login'` route and a `post '/sessions'` route. 
+* This is a link to the `get '/sessions/login'` route. Checkout the two routes defined in the controller for logging in and out. We have a `get '/sessions/login'` route and a `post '/sessions'` route.
 * The `get /sessions/login'` route renders the login view page. Restart your app by executing `Ctrl + C` and then typing `shotgun` in your terminal. Navigate back to the root page, [localhost:9393](http://localhost:9393/), and click on the 'Log In' link. It should take you to a page that says 'Log In Below:'. Let's create our login form!
 * Open up `app/views/sessions/login.erb`. We need a form that sends a `POST` request to `/sessions` and has input fields for email and password. Don't forget to add a submit button that says 'Log In'. Then, to test that everything is working as expected, place the line `puts params` in the `post '/sessions'` route. In your browser, fill out the form and hit 'Log In'.
 * In your terminal, you should see the outputted `params` hash looking something like this (but with whatever information you entered into the login form):
