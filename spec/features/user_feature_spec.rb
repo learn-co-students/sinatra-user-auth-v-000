@@ -59,4 +59,5 @@ describe "User sign up, log in, sign out" do
       expect(page).to have_content('Log In')
     end
   end
+
 end
