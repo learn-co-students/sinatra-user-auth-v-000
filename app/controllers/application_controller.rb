@@ -17,6 +17,10 @@ class ApplicationController < Sinatra::Base
 
   post '/registrations' do
 
+    @user = User.new(name: params["name"], email: params["email"], password: params["password"])
+    @user.save
+
+    session[:id] = @user.id
     redirect '/users/home'
   end
 
@@ -25,17 +29,22 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessions' do
-
-    redirect '/users/home'
+    @user = User.find_by(email: params["email"], password: params["password"])
+    if @user == nil
+      redirect '/sessions/login'
+    else
+      session[:id] = @user.id
+      redirect '/users/home'
+    end
   end
 
-  get '/sessions/logout' do 
-
+  get '/sessions/logout' do
+    session.clear
     redirect '/'
   end
 
   get '/users/home' do
-
+    @user = User.find(session[:id])
     erb :'/users/home'
   end
 
