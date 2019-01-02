@@ -1,6 +1,6 @@
 require 'bundler/setup'
 Bundler.require
-
+SINATRA_ACTIVESUPPORT_WARNING=false
 ENV['SINATRA_ENV'] ||= "development"
 
 ActiveRecord::Base.establish_connection(
@@ -10,3 +10,4 @@ ActiveRecord::Base.establish_connection(
 
 Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
 Dir[File.join(File.dirname(__FILE__), "../app/controllers", "*.rb")].each {|f| require f}
+

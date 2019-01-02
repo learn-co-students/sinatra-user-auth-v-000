@@ -1,2 +1,20 @@
 <h1>Log In Below:</h1>
+<form method="POST" action="/sessions">
+  <p>Name: <input type="text" name="name"></p>
+  <p>Email: <input type="text" name="email"></p>
+  <p>Password: <input type="password" name="password"></p>
+  <input type="submit" value="Log In">
+</form>
+
+<!--
+    it 'successfully signs up with a name, email, and password' do
+      expect(current_path).to eq('/registrations/signup')
+      fill_in("name", :with => valid_user.name)
+      fill_in("email", :with => valid_user.email)
+      fill_in("password", :with => valid_user.password)
+      click_button('Sign Up')
+      expect(current_path).to eq('/users/home')
+      expect(page).to have_content("Welcome, #{valid_user.name}!")
+    end
+-->
 
