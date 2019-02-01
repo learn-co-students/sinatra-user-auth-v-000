@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20190201175808) do
 
   create_table "users", force: :cascade do |t|
@@ -18,5 +19,8 @@ ActiveRecord::Schema.define(version: 20190201175808) do
     t.string "email"
     t.string "password"
   end
+=======
+ActiveRecord::Schema.define(version: 0) do
+>>>>>>> 0d6012a1d0cd14615b9c2b124cb610c1b3b7a6b0
 
 end
