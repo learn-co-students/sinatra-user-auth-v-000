@@ -1,3 +1,5 @@
+require 'pry'
+
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   set :views, Proc.new { File.join(root, "../views/") }
@@ -18,9 +20,11 @@ class ApplicationController < Sinatra::Base
 
   post '/registrations' do
     @user = User.new(name: params["name"], email: params["email"], password: params["password"])
-    @user.save
+    @user.save #AVI put this here already to troll you on valentines day
     session[:user_id] = @user.id
-
+    puts params #added because of readme
+    #We did it! We registered a new user! Now we just need to sign them in.
+    #On the following line, set the session[:id] equal to our new user's ID:
     redirect '/users/home'
   end
 
@@ -45,8 +49,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/home' do
-
-    @user = User.find(session[:user_id])
+    @user = User.find(session[:user_id]) #:user_id
     erb :'/users/home'
   end
 end
