@@ -18,8 +18,8 @@ In this codealong lab, we'll build a Sinatra application that will allow users t
 What does it mean for a user to 'log in'? The action of logging in is the simple action of storing a user's ID in the `session` hash. Here's a basic user login flow:
 
 1. User visits the login page and fills out a form with their email and password. They hit 'submit' to `POST` that data to a controller route.
-2. That controller route accesses the user's email and password from the `params` hash. That info is used to find the appropriate user from the database with a line such as `User.find_by(email: params[:email], password: params[:password])`. **Then, that user's ID is stored as the value of `session[:id]`.**
-3. As a result, we can introspect on the `session` hash in *any other controller route* and grab the current user by matching up a user ID with the value in `session[:id]`. That means that, for the duration of the session (i.e., the time between when someone logs in to and logs out of your app), the app will know who the current user is on every page.
+2. That controller route accesses the user's email and password from the `params` hash. That info is used to find the appropriate user from the database with a line such as `User.find_by(email: params[:email], password: params[:password])`. **Then, that user's ID is stored as the value of `session[:user_id]`.**
+3. As a result, we can introspect on the `session` hash in *any other controller route* and grab the current user by matching up a user ID with the value in `session[:user_id]`. That means that, for the duration of the session (i.e., the time between when someone logs in to and logs out of your app), the app will know who the current user is on every page.
 
 #### A Note On Password Encryption
 
@@ -35,7 +35,7 @@ Before a user can sign in, they need to sign up! What does it mean to 'sign up'?
 
 1. Gets the new user's name, email, and password from the `params` hash.
 2. Uses that info to create and save a new instance of `User`. For example: `User.create(name: params[:name], email: params[:email], password: params[:password])`.
-3. Signs the user in once they have completed the sign-up process. It would be annoying if you had to create a new account on a site and *then* sign in immediately afterwards. So, in the same controller route in which we create a new user, we set the `session[:id]` equal to the new user's ID, effectively logging them in.
+3. Signs the user in once they have completed the sign-up process. It would be annoying if you had to create a new account on a site and *then* sign in immediately afterwards. So, in the same controller route in which we create a new user, we set the `session[:user_id]` equal to the new user's ID, effectively logging them in.
 4. Finally, we redirect the user somewhere else, such as their personal homepage.
 
 ## Project Structure
@@ -65,7 +65,7 @@ Our file structure looks like this:
 ```
 
 
-### The `app` Folder 
+### The `app` Folder
 
 The `app` folder contains the models, views and controllers that make up the core of our Sinatra application. Get used to seeing this setup. It is conventional to group these files under an `app` folder.
 
@@ -180,10 +180,10 @@ end
 @user.save
 ```
 
-* We did it! We registered a new user! Now we just need to sign them in. On the following line, set the `session[:id]` equal to our new user's ID:
+* We did it! We registered a new user! Now we just need to sign them in. On the following line, set the `session[:user_id]` equal to our new user's ID:
 
 ```ruby
-session[:id] = @user.id
+session[:user_id] = @user.id
 ```
 
 * Take a look at the last line of the method:
@@ -212,7 +212,7 @@ Remember, after a user signs up and is signed in via the code we wrote in the pr
 
 ```ruby
 get '/users/home' do
-  @user = User.find(session[:id])
+  @user = User.find(session[:user_id])
   erb :'/users/home'
 end
 ```
@@ -226,7 +226,7 @@ end
 <a href="/sessions/login">Log In</a>
 ```
 
-* This is a link to the `get '/sessions/login'` route. Checkout the two routes defined in the controller for logging in and out. We have a `get '/sessions/login'` route and a `post '/sessions'` route. 
+* This is a link to the `get '/sessions/login'` route. Checkout the two routes defined in the controller for logging in and out. We have a `get '/sessions/login'` route and a `post '/sessions'` route.
 * The `get /sessions/login'` route renders the login view page. Restart your app by executing `Ctrl + C` and then typing `shotgun` in your terminal. Navigate back to the root page, [localhost:9393](http://localhost:9393/), and click on the 'Log In' link. It should take you to a page that says 'Log In Below:'. Let's create our login form!
 * Open up `app/views/sessions/login.erb`. We need a form that sends a `POST` request to `/sessions` and has input fields for email and password. Don't forget to add a submit button that says 'Log In'. Then, to test that everything is working as expected, place the line `puts params` in the `post '/sessions'` route. In your browser, fill out the form and hit 'Log In'.
 * In your terminal, you should see the outputted `params` hash looking something like this (but with whatever information you entered into the login form):
@@ -234,13 +234,13 @@ end
 ```bash
 {"email"=>"beini@bee.com", "password"=>"password"}
 ```
-* Inside the `post '/sessions'` route, let's write the lines of code that will find the correct user from the database and log them in by setting the `session[:id]` equal to their user ID.
+* Inside the `post '/sessions'` route, let's write the lines of code that will find the correct user from the database and log them in by setting the `session[:user_id]` equal to their user ID.
 
 ```ruby
 @user = User.find_by(email: params["email"], password: params["password"])
-session[:id] = @user.id
+session[:user_id] = @user.id
 ```
-* Notice that the last line of the route redirects the user to their homepage. We already coded the `'/users/home'` route in the controller to retrieve the current user based on the ID stored in `session[:id]`.
+* Notice that the last line of the route redirects the user to their homepage. We already coded the `'/users/home'` route in the controller to retrieve the current user based on the ID stored in `session[:user_id]`.
 * Run the test suite again and you should be passing the user login tests.
 
 #### Step 5: Logging Out
