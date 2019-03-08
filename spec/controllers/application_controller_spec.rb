@@ -26,7 +26,8 @@ describe "ApplicationController" do
       expect(last_response).to be_ok
     end
 
-    it "renders the sign-up template" do
+    it "renders the signup template" do
+
       expect(last_response.body).to include("Sign Up")
     end
   end
@@ -41,7 +42,8 @@ describe "ApplicationController" do
       expect(last_response).to be_ok
     end
 
-    it "renders the sign-up template" do
+    it "renders the signup template" do
+
       expect(last_response.body).to include("Log In")
     end
   end
