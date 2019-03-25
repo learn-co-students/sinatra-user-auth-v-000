@@ -4,7 +4,6 @@ class CreateUsersTable < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :password
-      # binding.pry
     end
   end
 end
