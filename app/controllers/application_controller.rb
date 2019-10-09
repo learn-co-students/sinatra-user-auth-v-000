@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     erb :home
-  end
+
 
   get '/registrations/signup' do
 
