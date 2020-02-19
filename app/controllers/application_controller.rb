@@ -12,26 +12,28 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/registrations/signup' do
-
+    
     erb :'/registrations/signup'
   end
   
-                             #this registers new users info after submit button clicked
-  post '/registrations' do   
+    #this registers new users info after submit button clicked
+    post '/registrations' do
     @user = User.new(name: params["name"], email: params["email"], password: params["password"])
     @user.save
     session[:user_id] = @user.id
-
     redirect '/users/home'  #will log in & redirect user to home page after signing up 
   end
 
-  get '/sessions/login' do
 
   #the line of code below render the view page in app/views/sessions/login.erb
+  
+  get '/sessions/login' do
+    
     erb :'sessions/login'
   end
 
-  post '/sessions' do   #user log in form 
+   #user log in form 
+  post '/sessions' do 
     @user = User.find_by(email: params[:email], password: params[:password])
     if @user
       session[:user_id] = @user.id
@@ -40,13 +42,14 @@ class ApplicationController < Sinatra::Base
     redirect '/sessions/login'
   end
 
-  get '/sessions/logout' do  #user logout 
+
+  #user logout
+  get '/sessions/logout' do
     session.clear
     redirect '/'
   end
 
   get '/users/home' do
-
     @user = User.find(session[:user_id])
     erb :'/users/home'
   end
