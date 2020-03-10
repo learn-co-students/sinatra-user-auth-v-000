@@ -17,6 +17,9 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registrations' do
+    # test HTML form with the line of code below
+    # puts params
+    
     @user = User.new(name: params["name"], email: params["email"], password: params["password"])
     @user.save
     session[:user_id] = @user.id
@@ -26,11 +29,14 @@ class ApplicationController < Sinatra::Base
 
   get '/sessions/login' do
 
-    # the line of code below render the view page in app/views/sessions/login.erb
+    # the line of code below renders the view page in app/views/sessions/login.erb
     erb :'sessions/login'
   end
 
   post '/sessions' do
+    # test HTML form with the line of code below
+    # puts params
+
     @user = User.find_by(email: params[:email], password: params[:password])
     if @user
       session[:user_id] = @user.id
@@ -45,7 +51,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/home' do
-
     @user = User.find(session[:user_id])
     erb :'/users/home'
   end
