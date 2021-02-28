@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this codealong lab, we'll build a Sinatra application that will allow users to sign up for, log into, and then log out of your application.
+In this codealong lab, we'll build a Sinatra application that willhttps://learn.co/tracks/full-stack-web-development-v8/module-12-sinatra/section-5-activerecord/user-authentication-in-sinatra?batch_id=306&track_id=59882# allow users to sign up for, log into, and then log out of your application.
 
 ## Objectives
 
